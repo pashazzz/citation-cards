@@ -1,4 +1,7 @@
 #  Citation cards
+## Overview
+iOS application for store a great, smart, motivatation citations and coping cards.
+Use the widgets to always have the one on your phone screen.
 
 ## ToDo
 ### Models
@@ -6,15 +9,12 @@
     - text, String
     - author, String
     - source, String
+    - createdAt, Date
     - updatedAt, Date
     - isFavourite, Boolean
 - tag
     - tag, String
     - color, String // using something like 'blue' or '#2020AA'; are we use only limited colors, or can provide palette for user
-- citations_tags
-    - citationId
-    - tagId
-        - unique key for citationId_tagId
 
 ### Three main screens from menu
 - Citations list
