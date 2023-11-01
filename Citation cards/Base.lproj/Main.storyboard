@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="-3575" y="148"/>
         </scene>
-        <!--Home Controller-->
+        <!--Home-->
         <scene sceneID="6kQ-m9-I8t">
             <objects>
-                <viewController id="JvS-v1-gM9" customClass="HomeController" sceneMemberID="viewController">
+                <viewController title="Home" id="JvS-v1-gM9" customClass="HomeController" customModule="Citation_cards" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KfT-Mj-euy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="-3576" y="875"/>
         </scene>
-        <!--Favourites Controller-->
+        <!--Favourites-->
         <scene sceneID="bi7-od-PUe">
             <objects>
-                <viewController id="6s0-1N-818" customClass="FavouritesController" customModule="Citation_cards" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Favourites" id="6s0-1N-818" customClass="FavouritesController" customModule="Citation_cards" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rcb-fg-0XF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="-2407" y="875"/>
         </scene>
-        <!--Settings Controller-->
+        <!--Settings-->
         <scene sceneID="41h-gP-iSa">
             <objects>
-                <viewController id="iYa-u0-iPM" customClass="SettingsController" customModule="Citation_cards" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="iYa-u0-iPM" customClass="SettingsController" customModule="Citation_cards" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k0J-O2-LAR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

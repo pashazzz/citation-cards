@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="tVV-zf-LIW" customClass="CitationCell" customModule="Citation_cards" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="72"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tVV-zf-LIW" id="qTR-mz-XAk" customClass="CitationCell" customModule="Citation_cards" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="72"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkD-Wi-Uiz">
+                        <rect key="frame" x="20" y="11" width="353" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Author" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5z-Tz-B25">
+                        <rect key="frame" x="20" y="43" width="353" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="N5z-Tz-B25" firstAttribute="top" secondItem="fkD-Wi-Uiz" secondAttribute="bottom" id="GgZ-Um-9JC"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="N5z-Tz-B25" secondAttribute="bottom" id="RkM-JQ-Ich"/>
+                    <constraint firstItem="N5z-Tz-B25" firstAttribute="leading" secondItem="qTR-mz-XAk" secondAttribute="leadingMargin" id="Uvq-xs-vxM"/>
+                    <constraint firstItem="fkD-Wi-Uiz" firstAttribute="leading" secondItem="qTR-mz-XAk" secondAttribute="leadingMargin" id="bFu-qg-pDA"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="fkD-Wi-Uiz" secondAttribute="trailing" id="nWY-ev-qFz"/>
+                    <constraint firstItem="fkD-Wi-Uiz" firstAttribute="top" secondItem="qTR-mz-XAk" secondAttribute="topMargin" id="rXv-vZ-eTk"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="N5z-Tz-B25" secondAttribute="trailing" id="tOy-jv-mHc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="author" destination="N5z-Tz-B25" id="Swm-bk-tjH"/>
+                <outlet property="caption" destination="fkD-Wi-Uiz" id="OXP-KN-IaG"/>
+            </connections>
+            <point key="canvasLocation" x="258.77862595419845" y="-70.422535211267615"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
