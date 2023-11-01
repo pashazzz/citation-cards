@@ -28,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="-2406" y="-606"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="Up6-GR-aJK">
             <objects>
                 <navigationController id="HEe-p5-B1o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="7g4-yI-A8Y"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" selectedImage="house.fill" id="7g4-yI-A8Y"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iTa-Wf-7cP">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="-3575" y="148"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Controller-->
         <scene sceneID="6kQ-m9-I8t">
             <objects>
-                <viewController id="JvS-v1-gM9" sceneMemberID="viewController">
+                <viewController id="JvS-v1-gM9" customClass="HomeController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KfT-Mj-euy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="-3576" y="875"/>
         </scene>
-        <!--View Controller-->
+        <!--Favourites Controller-->
         <scene sceneID="bi7-od-PUe">
             <objects>
-                <viewController id="6s0-1N-818" sceneMemberID="viewController">
+                <viewController id="6s0-1N-818" customClass="FavouritesController" customModule="Citation_cards" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rcb-fg-0XF">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="-2407" y="875"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="41h-gP-iSa">
             <objects>
-                <viewController id="iYa-u0-iPM" sceneMemberID="viewController">
+                <viewController id="iYa-u0-iPM" customClass="SettingsController" customModule="Citation_cards" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k0J-O2-LAR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,11 +93,11 @@
             </objects>
             <point key="canvasLocation" x="-1269" y="875"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="d9c-up-zC7">
             <objects>
                 <navigationController id="u9O-mB-03c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="0XE-rr-AzP"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" selectedImage="gearshape.fill" id="0XE-rr-AzP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EDB-SM-z1f">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -110,11 +110,11 @@
             </objects>
             <point key="canvasLocation" x="-1269" y="148"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="jzQ-HL-UiE">
             <objects>
                 <navigationController id="UcL-Uz-YZe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="zFl-so-yHT"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="zFl-so-yHT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IYP-yg-rnY">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -129,6 +129,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
