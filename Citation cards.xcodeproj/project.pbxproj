@@ -23,7 +23,27 @@
 		3ECBCE5B2AF2A83F00D509DB /* CitationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ECBCE5A2AF2A83F00D509DB /* CitationCell.xib */; };
 		3ECBCE5D2AF2AA6D00D509DB /* CitationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE5C2AF2AA6D00D509DB /* CitationCell.swift */; };
 		3ECBCE612AF2B66C00D509DB /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE602AF2B66C00D509DB /* Storage.swift */; };
+		3ECBCED32AF3B43700D509DB /* Citation_cardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCED22AF3B43700D509DB /* Citation_cardsTests.swift */; };
+		3ECBCEE02AF3B4AE00D509DB /* Citation_cardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEDF2AF3B4AE00D509DB /* Citation_cardsUITests.swift */; };
+		3ECBCEE22AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3ECBCED42AF3B43700D509DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3ECBCE262AF13CE000D509DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ECBCE2D2AF13CE000D509DB;
+			remoteInfo = "Citation cards";
+		};
+		3ECBCEE32AF3B4AE00D509DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3ECBCE262AF13CE000D509DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ECBCE2D2AF13CE000D509DB;
+			remoteInfo = "Citation cards";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3ECBCE2E2AF13CE000D509DB /* Citation cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Citation cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,10 +65,29 @@
 		3ECBCE5A2AF2A83F00D509DB /* CitationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitationCell.xib; sourceTree = "<group>"; };
 		3ECBCE5C2AF2AA6D00D509DB /* CitationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitationCell.swift; sourceTree = "<group>"; };
 		3ECBCE602AF2B66C00D509DB /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		3ECBCED02AF3B43600D509DB /* Citation cardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Citation cardsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ECBCED22AF3B43700D509DB /* Citation_cardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsTests.swift; sourceTree = "<group>"; };
+		3ECBCEDD2AF3B4AD00D509DB /* Citation cardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Citation cardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ECBCEDF2AF3B4AE00D509DB /* Citation_cardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsUITests.swift; sourceTree = "<group>"; };
+		3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3ECBCE2B2AF13CE000D509DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ECBCECD2AF3B43600D509DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ECBCEDA2AF3B4AD00D509DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -63,6 +102,8 @@
 			children = (
 				3ECBCE482AF13ED200D509DB /* README.md */,
 				3ECBCE302AF13CE000D509DB /* Citation cards */,
+				3ECBCED12AF3B43700D509DB /* Citation cardsTests */,
+				3ECBCEDE2AF3B4AE00D509DB /* Citation cardsUITests */,
 				3ECBCE2F2AF13CE000D509DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				3ECBCE2E2AF13CE000D509DB /* Citation cards.app */,
+				3ECBCED02AF3B43600D509DB /* Citation cardsTests.xctest */,
+				3ECBCEDD2AF3B4AD00D509DB /* Citation cardsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +166,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		3ECBCED12AF3B43700D509DB /* Citation cardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				3ECBCED22AF3B43700D509DB /* Citation_cardsTests.swift */,
+			);
+			path = "Citation cardsTests";
+			sourceTree = "<group>";
+		};
+		3ECBCEDE2AF3B4AE00D509DB /* Citation cardsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3ECBCEDF2AF3B4AE00D509DB /* Citation_cardsUITests.swift */,
+				3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */,
+			);
+			path = "Citation cardsUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +203,42 @@
 			productReference = 3ECBCE2E2AF13CE000D509DB /* Citation cards.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3ECBCECF2AF3B43600D509DB /* Citation cardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ECBCED62AF3B43700D509DB /* Build configuration list for PBXNativeTarget "Citation cardsTests" */;
+			buildPhases = (
+				3ECBCECC2AF3B43600D509DB /* Sources */,
+				3ECBCECD2AF3B43600D509DB /* Frameworks */,
+				3ECBCECE2AF3B43600D509DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3ECBCED52AF3B43700D509DB /* PBXTargetDependency */,
+			);
+			name = "Citation cardsTests";
+			productName = "Citation cardsTests";
+			productReference = 3ECBCED02AF3B43600D509DB /* Citation cardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3ECBCEDC2AF3B4AD00D509DB /* Citation cardsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ECBCEE52AF3B4AE00D509DB /* Build configuration list for PBXNativeTarget "Citation cardsUITests" */;
+			buildPhases = (
+				3ECBCED92AF3B4AD00D509DB /* Sources */,
+				3ECBCEDA2AF3B4AD00D509DB /* Frameworks */,
+				3ECBCEDB2AF3B4AD00D509DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3ECBCEE42AF3B4AE00D509DB /* PBXTargetDependency */,
+			);
+			name = "Citation cardsUITests";
+			productName = "Citation cardsUITests";
+			productReference = 3ECBCEDD2AF3B4AD00D509DB /* Citation cardsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -155,6 +251,14 @@
 				TargetAttributes = {
 					3ECBCE2D2AF13CE000D509DB = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					3ECBCECF2AF3B43600D509DB = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 3ECBCE2D2AF13CE000D509DB;
+					};
+					3ECBCEDC2AF3B4AD00D509DB = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 3ECBCE2D2AF13CE000D509DB;
 					};
 				};
 			};
@@ -172,6 +276,8 @@
 			projectRoot = "";
 			targets = (
 				3ECBCE2D2AF13CE000D509DB /* Citation cards */,
+				3ECBCECF2AF3B43600D509DB /* Citation cardsTests */,
+				3ECBCEDC2AF3B4AD00D509DB /* Citation cardsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -185,6 +291,20 @@
 				3ECBCE412AF13CE100D509DB /* LaunchScreen.storyboard in Resources */,
 				3ECBCE3E2AF13CE100D509DB /* Assets.xcassets in Resources */,
 				3ECBCE392AF13CE000D509DB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ECBCECE2AF3B43600D509DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ECBCEDB2AF3B4AD00D509DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +330,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ECBCECC2AF3B43600D509DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ECBCED32AF3B43700D509DB /* Citation_cardsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3ECBCED92AF3B4AD00D509DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ECBCEE02AF3B4AE00D509DB /* Citation_cardsUITests.swift in Sources */,
+				3ECBCEE22AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3ECBCED52AF3B43700D509DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ECBCE2D2AF13CE000D509DB /* Citation cards */;
+			targetProxy = 3ECBCED42AF3B43700D509DB /* PBXContainerItemProxy */;
+		};
+		3ECBCEE42AF3B4AE00D509DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ECBCE2D2AF13CE000D509DB /* Citation cards */;
+			targetProxy = 3ECBCEE32AF3B4AE00D509DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3ECBCE372AF13CE000D509DB /* Main.storyboard */ = {
@@ -407,6 +557,76 @@
 			};
 			name = Release;
 		};
+		3ECBCED72AF3B43700D509DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YBDW6K85R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky-labs.Citation-cardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Citation cards.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Citation cards";
+			};
+			name = Debug;
+		};
+		3ECBCED82AF3B43700D509DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YBDW6K85R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky-labs.Citation-cardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Citation cards.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Citation cards";
+			};
+			name = Release;
+		};
+		3ECBCEE62AF3B4AE00D509DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YBDW6K85R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky-labs.Citation-cardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Citation cards";
+			};
+			name = Debug;
+		};
+		3ECBCEE72AF3B4AE00D509DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YBDW6K85R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky-labs.Citation-cardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Citation cards";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -424,6 +644,24 @@
 			buildConfigurations = (
 				3ECBCE462AF13CE100D509DB /* Debug */,
 				3ECBCE472AF13CE100D509DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ECBCED62AF3B43700D509DB /* Build configuration list for PBXNativeTarget "Citation cardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ECBCED72AF3B43700D509DB /* Debug */,
+				3ECBCED82AF3B43700D509DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ECBCEE52AF3B4AE00D509DB /* Build configuration list for PBXNativeTarget "Citation cardsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ECBCEE62AF3B4AE00D509DB /* Debug */,
+				3ECBCEE72AF3B4AE00D509DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
