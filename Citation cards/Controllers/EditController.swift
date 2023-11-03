@@ -12,6 +12,16 @@ class EditController: UITableViewController {
     @IBOutlet var authorTextField: UITextField!
     @IBOutlet var sourceTextField: UITextField!
     
+    let storage = Storage()
+    
+    @IBAction func onTapSaveButton(_ sender: UIBarButtonItem) {
+        let item = (text: citationTextView.text!,
+                    author: authorTextField.text,
+                    source: sourceTextField.text)
+
+        storage.saveCitation(item)
+        navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

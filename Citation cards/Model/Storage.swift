@@ -9,6 +9,7 @@ import UIKit
 
 protocol StorageProtocol {
     func getAllCitations() -> [Citation]
+    func saveCitation(_ item: (text: String, author: String?, source: String?)) -> Void
 }
 
 class Storage: StorageProtocol {
@@ -22,5 +23,19 @@ class Storage: StorageProtocol {
             return []
         }
         return items
+    }
+    
+    func saveCitation(_ item: (text: String, author: String?, source: String?)) {
+        let citation = Citation(context: context)
+        citation.text = item.text
+        citation.author = item.author
+        citation.source = item.source
+        citation.createdAt = Date()
+        citation.updatedAt = Date()
+        do {
+            try context.save()
+        } catch {
+            //
+        }
     }
 }
