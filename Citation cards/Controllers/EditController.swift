@@ -16,9 +16,9 @@ class EditController: UITableViewController {
     let storage = Storage()
     
     @IBAction func onTapSaveButton(_ sender: UIBarButtonItem) {
-        let item = (text: citationTextView.text!,
-                    author: authorTextField.text,
-                    source: sourceTextField.text)
+        let item = CitationForSave(text: citationTextView.text!,
+                                   author: authorTextField.text ?? "",
+                                   source: sourceTextField.text ?? "")
 
         storage.saveCitation(item)
         doAfterEdit?()

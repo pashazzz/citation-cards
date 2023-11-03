@@ -16,10 +16,10 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let citation: Citation? = citations[indexPath.row] ?? nil
+//        let citation: Citation? = citations[indexPath.row] ?? nil
         let cell = tableView.dequeueReusableCell(withIdentifier: "citation", for: indexPath) as! CitationCell
-        cell.caption.text = citation?.text
-        cell.author.text = citation?.author
+//        cell.caption.text = citation?.text
+//        cell.author.text = citation?.author
 
         return cell
     }
