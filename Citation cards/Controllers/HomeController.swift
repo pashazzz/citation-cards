@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var citations: [Citation] = []
+    var citations: [Citation?] = []
     let storage = Storage()
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -16,10 +16,10 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let citation = citations[indexPath.row]
+        let citation: Citation? = citations[indexPath.row] ?? nil
         let cell = tableView.dequeueReusableCell(withIdentifier: "citation", for: indexPath) as! CitationCell
-        cell.caption.text = citation.text
-        cell.author.text = citation.author
+        cell.caption.text = citation?.text
+        cell.author.text = citation?.author
 
         return cell
     }
@@ -40,8 +40,12 @@ class HomeController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Home"
+        navigationItem.title = "Home"
         
+        // MARK: action buttons
+        navigationItem.leftBarButtonItems = [editButtonItem]
+        
+        // MARK: UI
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self

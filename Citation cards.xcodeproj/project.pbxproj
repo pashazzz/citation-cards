@@ -26,6 +26,7 @@
 		3ECBCED32AF3B43700D509DB /* Citation_cardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCED22AF3B43700D509DB /* Citation_cardsTests.swift */; };
 		3ECBCEE02AF3B4AE00D509DB /* Citation_cardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEDF2AF3B4AE00D509DB /* Citation_cardsUITests.swift */; };
 		3ECBCEE22AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */; };
+		3ECBCEFD2AF401E800D509DB /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEFC2AF401E800D509DB /* EditController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		3ECBCEDD2AF3B4AD00D509DB /* Citation cardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Citation cardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECBCEDF2AF3B4AE00D509DB /* Citation_cardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsUITests.swift; sourceTree = "<group>"; };
 		3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3ECBCEFC2AF401E800D509DB /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				3ECBCE352AF13CE000D509DB /* HomeController.swift */,
 				3ECBCE4A2AF2A10600D509DB /* FavouritesController.swift */,
 				3ECBCE4C2AF2A11D00D509DB /* SettingsController.swift */,
+				3ECBCEFC2AF401E800D509DB /* EditController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				3ECBCE4D2AF2A11D00D509DB /* SettingsController.swift in Sources */,
 				3ECBCE4B2AF2A10600D509DB /* FavouritesController.swift in Sources */,
 				3ECBCE362AF13CE000D509DB /* HomeController.swift in Sources */,
+				3ECBCEFD2AF401E800D509DB /* EditController.swift in Sources */,
 				3ECBCE322AF13CE000D509DB /* AppDelegate.swift in Sources */,
 				3ECBCE552AF2A70400D509DB /* Citation+CoreDataClass.swift in Sources */,
 				3ECBCE612AF2B66C00D509DB /* Storage.swift in Sources */,
