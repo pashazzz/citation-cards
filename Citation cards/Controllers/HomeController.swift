@@ -95,14 +95,19 @@ class HomeController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditController" {
+            let destination = segue.destination as! EditController
+            destination.doAfterEdit = {[unowned self] in
+                citations = storage.getAllCitations()
+                updTableView()
+            }
+        }
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

@@ -100,7 +100,7 @@
                     <navigationItem key="navigationItem" id="jaP-o7-6cZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dDM-jT-oxA">
                             <connections>
-                                <segue destination="AmH-FP-Ncl" kind="show" id="Ns5-gz-y72"/>
+                                <segue destination="AmH-FP-Ncl" kind="show" identifier="EditController" id="Ns5-gz-y72"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -112,7 +112,7 @@
         <!--Edit Controller-->
         <scene sceneID="Sdv-47-hFL">
             <objects>
-                <tableViewController id="AmH-FP-Ncl" customClass="EditController" customModule="Citation_cards" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EditController" id="AmH-FP-Ncl" customClass="EditController" customModule="Citation_cards" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="tHG-be-9Ci">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

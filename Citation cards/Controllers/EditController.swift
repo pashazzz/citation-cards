@@ -12,6 +12,7 @@ class EditController: UITableViewController {
     @IBOutlet var authorTextField: UITextField!
     @IBOutlet var sourceTextField: UITextField!
     
+    var doAfterEdit: (() -> Void)?
     let storage = Storage()
     
     @IBAction func onTapSaveButton(_ sender: UIBarButtonItem) {
@@ -20,6 +21,7 @@ class EditController: UITableViewController {
                     source: sourceTextField.text)
 
         storage.saveCitation(item)
+        doAfterEdit?()
         navigationController?.popViewController(animated: true)
     }
     
