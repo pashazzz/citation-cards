@@ -10,6 +10,7 @@ import UIKit
 class CitationCell: UITableViewCell {
     @IBOutlet var caption: UILabel!
     @IBOutlet var author: UILabel!
+    @IBOutlet var source: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

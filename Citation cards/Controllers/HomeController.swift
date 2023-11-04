@@ -55,6 +55,7 @@ class HomeController: UITableViewController {
         let citation = citations[indexPath.row]
         cell.caption?.text = citation.text!
         cell.author?.text = citation.author
+        cell.source?.text = citation.source
 
         return cell
     }
