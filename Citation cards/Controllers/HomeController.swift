@@ -12,6 +12,7 @@ class HomeController: UITableViewController {
     let storage = Storage()
 
     private func updTableView() {
+        citations = storage.getAllCitations()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -48,16 +49,24 @@ class HomeController: UITableViewController {
         return citations.count
     }
 
-    
+    // display cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "citationCell", for: indexPath) as! CitationCell
         
         let citation = citations[indexPath.row]
-        cell.caption?.text = citation.text!
+        cell.caption?.text = citation.text
         cell.author?.text = citation.author
         cell.source?.text = citation.source
 
         return cell
+    }
+    
+    // commit
+    // delete row on click delete action on edit
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let citation = citations[indexPath.row]
+        storage.removeCitation(citation)
+        updTableView()
     }
     
 

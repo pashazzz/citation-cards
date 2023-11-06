@@ -64,19 +64,19 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="t6I-2m-RmA">
                                             <rect key="frame" x="20" y="10.999999999999996" width="353" height="56.666666666666657"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Citation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5A-EY-uRJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5A-EY-uRJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="20.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bx4-dT-UmX">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bx4-dT-UmX">
                                                     <rect key="frame" x="0.0" y="20.666666666666668" width="353" height="18.000000000000004"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Source" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSb-0Q-ynh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Source" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSb-0Q-ynh">
                                                     <rect key="frame" x="0.0" y="38.666666666666664" width="353" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -84,14 +84,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Bx4-dT-UmX" firstAttribute="top" secondItem="N5A-EY-uRJ" secondAttribute="bottom" constant="4" id="DLr-6Q-RdS"/>
-                                                <constraint firstItem="DSb-0Q-ynh" firstAttribute="top" secondItem="Bx4-dT-UmX" secondAttribute="bottom" constant="4" id="Qvr-KV-lnY"/>
+                                                <constraint firstAttribute="bottom" secondItem="Bx4-dT-UmX" secondAttribute="bottom" constant="17.999999999999986" id="i6A-CJ-RKW"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="t6I-2m-RmA" secondAttribute="trailing" id="B5J-zg-2cg"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="t6I-2m-RmA" secondAttribute="bottom" id="DZw-3s-VOf"/>
                                         <constraint firstItem="t6I-2m-RmA" firstAttribute="leading" secondItem="dSE-MH-hBN" secondAttribute="leadingMargin" id="jJ7-qV-14a"/>
                                         <constraint firstItem="t6I-2m-RmA" firstAttribute="top" secondItem="dSE-MH-hBN" secondAttribute="topMargin" id="qgh-w2-ss6"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="t6I-2m-RmA" secondAttribute="bottom" constant="8" id="uDh-ui-Eiq"/>

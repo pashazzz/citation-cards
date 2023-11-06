@@ -30,6 +30,7 @@ class CitationForSave: CitationForSaveProtocol {
 protocol StorageProtocol {
     func getAllCitations() -> [Citation]
     func saveCitation(_ item: CitationForSaveProtocol) -> Void
+    func removeCitation(_ item: Citation) -> Void
 }
 
 class Storage: StorageProtocol {
@@ -58,5 +59,16 @@ class Storage: StorageProtocol {
         } catch {
             //
         }
+    }
+    
+    func removeCitation(_ item: Citation) {
+        context.delete(item)
+        do {
+            try context.save()
+        } catch {
+            print("Cannot delete item: \(item.id), \(String(describing: item.text))")
+            print(error)
+        }
+        
     }
 }
