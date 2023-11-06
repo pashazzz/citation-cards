@@ -15,12 +15,23 @@ class EditController: UITableViewController {
     var doAfterEdit: (() -> Void)?
     let storage = Storage()
     
+    var tempCitation: CitationForSaveProtocol = CitationForSave(text: "")
+    var editedCitation: Citation?
+    
     @IBAction func onTapSaveButton(_ sender: UIBarButtonItem) {
-        let item = CitationForSave(text: citationTextView.text!,
-                                   author: authorTextField.text ?? "",
-                                   source: sourceTextField.text ?? "")
-
-        storage.saveCitation(item)
+        // edited or new one
+        if let citation = editedCitation {
+            citation.text = citationTextView.text
+            citation.author = authorTextField.text
+            citation.source = sourceTextField.text
+            storage.editCitation(citation)
+        } else {
+            let item = CitationForSave(text: citationTextView.text!,
+                                       author: authorTextField.text ?? "",
+                                       source: sourceTextField.text ?? "")
+            storage.saveCitation(item)
+        }
+        
         doAfterEdit?()
         navigationController?.popViewController(animated: true)
     }
@@ -28,6 +39,10 @@ class EditController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        citationTextView.text = editedCitation?.text ?? tempCitation.text
+        authorTextField.text = editedCitation?.author ?? tempCitation.author
+        sourceTextField.text = editedCitation?.source ?? tempCitation.source
+//        citationTextView.isFavourite = tempCitation.isFavourite
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

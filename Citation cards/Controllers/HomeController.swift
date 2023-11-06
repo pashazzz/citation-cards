@@ -69,6 +69,23 @@ class HomeController: UITableViewController {
         updTableView()
     }
     
+    // swipe rightward actions
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") {[unowned self] _, _, _ in
+            let citation = citations[indexPath.row]
+            let editScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditController") as! EditController
+            editScreen.editedCitation = citation
+            editScreen.doAfterEdit = {[unowned self] in
+                citations = storage.getAllCitations()
+                updTableView()
+            }
+            navigationController?.pushViewController(editScreen, animated: true)
+        }
+        editAction.backgroundColor = .systemOrange
+        
+        return UISwipeActionsConfiguration(actions: [editAction])
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

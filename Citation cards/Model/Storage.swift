@@ -8,10 +8,10 @@
 import UIKit
 
 protocol CitationForSaveProtocol {
-    var text: String {get}
-    var author: String {get}
-    var source: String {get}
-    var isFavourite: Bool {get}
+    var text: String {get set}
+    var author: String {get set}
+    var source: String {get set}
+    var isFavourite: Bool {get set}
 }
 
 class CitationForSave: CitationForSaveProtocol {
@@ -61,6 +61,16 @@ class Storage: StorageProtocol {
         }
     }
     
+    func editCitation(_ item: Citation) {
+        item.updatedAt = Date()
+        do {
+            try context.save()
+        } catch {
+            print("Cannot edit item: \(String(describing: item.id)), \(String(describing: item.text))")
+            print(error)
+        }
+    }
+    
     func removeCitation(_ item: Citation) {
         context.delete(item)
         do {
@@ -69,6 +79,5 @@ class Storage: StorageProtocol {
             print("Cannot delete item: \(item.id), \(String(describing: item.text))")
             print(error)
         }
-        
     }
 }
