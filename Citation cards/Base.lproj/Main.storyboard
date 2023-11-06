@@ -53,9 +53,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8TC-EV-mfQ">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Sort" style="plain" id="bKz-O4-qqb">
+                                    <connections>
+                                        <action selector="showSortOptions:" destination="i0h-oE-zJx" id="F0q-QG-dnE"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="citationCell" id="krt-5t-sn1" customClass="CitationCell" customModule="Citation_cards" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="86.666664123535156"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="86.666664123535156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="krt-5t-sn1" id="dSE-MH-hBN">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="86.666664123535156"/>
@@ -154,14 +165,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="7ji-BV-8t5">
-                                        <rect key="frame" x="0.0" y="250" width="393" height="41.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="250" width="393" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7ji-BV-8t5" id="I5L-tA-HS3">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Author" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f6X-1b-bBr">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="19.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11" width="353" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -175,14 +186,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4hR-JF-B8S">
-                                        <rect key="frame" x="0.0" y="291.66666793823242" width="393" height="41.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="291" width="393" height="41.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4hR-JF-B8S" id="ORV-zW-7Ds">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="41.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Source" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PQQ-Xk-4LQ">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="353" height="19.333333333333329"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>

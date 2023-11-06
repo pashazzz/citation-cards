@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CitationForSaveProtocol {
     var text: String {get set}
@@ -28,18 +29,22 @@ class CitationForSave: CitationForSaveProtocol {
 }
 
 protocol StorageProtocol {
-    func getAllCitations() -> [Citation]
+    func getAllCitations(inOrder: SortOrder) -> [Citation]
     func saveCitation(_ item: CitationForSaveProtocol) -> Void
+    func editCitation(_ item: Citation) -> Void
     func removeCitation(_ item: Citation) -> Void
 }
 
 class Storage: StorageProtocol {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func getAllCitations() -> [Citation] {
+    func getAllCitations(inOrder: SortOrder) -> [Citation] {
         var items: [Citation] = []
+        let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
+        let createdAtSortDescriptor = NSSortDescriptor(key: "createdAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
+        fetchRequest.sortDescriptors = [createdAtSortDescriptor]
         do {
-            items = try context.fetch(Citation.fetchRequest())
+            items = try context.fetch(fetchRequest)
         } catch {
             return []
         }

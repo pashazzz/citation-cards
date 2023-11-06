@@ -9,13 +9,37 @@ import UIKit
 
 class HomeController: UITableViewController {
     var citations: [Citation] = []
+    var sortOrder: SortOrder = .newestFirst
     let storage = Storage()
+    let settings = Settings()
 
     private func updTableView() {
-        citations = storage.getAllCitations()
+        sortOrder = settings.getSortOrder()
+        citations = storage.getAllCitations(inOrder: sortOrder)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    @IBAction func showSortOptions(_ sender: UIBarItem) {
+        let sheet = UIAlertController(title: "Sorting", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let titleForNewest: String = "\(sortOrder == .newestFirst ? "\u{25C9}" : "\u{25CB}") Newest First"
+        let newestFirstAction = UIAlertAction(title: titleForNewest, style: .default) {[unowned self] _ in
+            settings.setSortOrder(order: .newestFirst)
+            updTableView()
+        }
+        let titleForOldest: String = "\(sortOrder == .oldestFirst ? "\u{25C9}" : "\u{25CB}") Oldest First"
+        let oldestFirstAction = UIAlertAction(title: titleForOldest, style: .default) {[unowned self] _ in
+            settings.setSortOrder(order: .oldestFirst)
+            updTableView()
+        }
+        sheet.addAction(cancelAction)
+        sheet.addAction(newestFirstAction)
+        sheet.addAction(oldestFirstAction)
+        
+        present(sheet, animated: true)
     }
     
     override func viewDidLoad() {
@@ -26,8 +50,6 @@ class HomeController: UITableViewController {
         
         // MARK: action buttons
         navigationItem.leftBarButtonItems = [editButtonItem]
-        
-        citations = storage.getAllCitations()
         
         updTableView()
         // Uncomment the following line to preserve selection between presentations
@@ -76,7 +98,6 @@ class HomeController: UITableViewController {
             let editScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditController") as! EditController
             editScreen.editedCitation = citation
             editScreen.doAfterEdit = {[unowned self] in
-                citations = storage.getAllCitations()
                 updTableView()
             }
             navigationController?.pushViewController(editScreen, animated: true)
@@ -127,7 +148,6 @@ class HomeController: UITableViewController {
         if segue.identifier == "EditController" {
             let destination = segue.destination as! EditController
             destination.doAfterEdit = {[unowned self] in
-                citations = storage.getAllCitations()
                 updTableView()
             }
         }
