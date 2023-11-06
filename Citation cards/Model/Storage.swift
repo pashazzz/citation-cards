@@ -15,17 +15,11 @@ protocol CitationForSaveProtocol {
     var isFavourite: Bool {get set}
 }
 
-class CitationForSave: CitationForSaveProtocol {
-    var text: String
-    var author: String
-    var source: String
-    var isFavourite: Bool
-    init(text: String, author: String = "", source: String = "", isFavourite: Bool = false) {
-        self.text = text
-        self.author = author
-        self.source = source
-        self.isFavourite = isFavourite
-    }
+struct CitationForSave: CitationForSaveProtocol {
+    var text: String = ""
+    var author: String = ""
+    var source: String = ""
+    var isFavourite: Bool = false
 }
 
 protocol StorageProtocol {
