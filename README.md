@@ -29,6 +29,7 @@ Use the widgets to always have the one on your phone screen.
     - List of all citations, sorted be recently modified
         - on the top display one of favourites
         - by click on item copy the whole meaning data for share it by paste anywhere; display faded message "Copied in clipboard!"
+        - do not delete citations immediately - archive it
 - Tags
     - List with all existed tags
         - on tap on the tag, select it and display all citations with this tag; can be multiple
@@ -37,6 +38,7 @@ Use the widgets to always have the one on your phone screen.
 - Settings
     - switcher, is need to display on the top of main screen the one favourite citation, by default - true
     - choosing the tags from which the citations will display on the widgets, by default - all
+    - access to archived citations - another screen, with rightward swipe to recover, and leftward - to delete
     - light/dark/automatic mode
     - language
     - about info
