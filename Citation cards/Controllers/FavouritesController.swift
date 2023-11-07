@@ -37,8 +37,9 @@ class FavouritesController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Favourites"
-        
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         updTableView()
     }
 
