@@ -12,6 +12,13 @@ class CitationCell: UITableViewCell {
     @IBOutlet var author: UILabel!
     @IBOutlet var source: UILabel!
     @IBOutlet var date: UILabel!
+    @IBOutlet var isFavourite: UIButton!
+    
+    var toggleIsFavourite: (() -> Void)!
+    
+    @IBAction func tapOnFavourite() -> Void {
+        toggleIsFavourite()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -85,6 +85,18 @@ class HomeController: UITableViewController {
         let dateTime = isModified ? citation.updatedAt! : citation.createdAt!
         let dateCaption = "\(isModified ? "Updated at:" : "Created at:") \(DateTimeHelper.getDateTimeString(from: dateTime))"
         cell.date?.text = dateCaption
+        
+        // is favourite
+        cell.isFavourite.setTitle("", for: .normal)
+        let imageConfiguration = UIImage.SymbolConfiguration(scale: .medium)
+        let isFavouriteImage = UIImage(systemName: citation.isFavourite ? "star.fill" : "star", withConfiguration: imageConfiguration)
+        cell.isFavourite.setImage(isFavouriteImage, for: .normal)
+        
+        cell.toggleIsFavourite = {[unowned self] in
+            citation.isFavourite = !citation.isFavourite
+            storage.editCitation(citation, needToModifyDate: false)
+            updTableView()
+        }
 
         return cell
     }

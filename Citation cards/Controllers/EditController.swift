@@ -11,6 +11,7 @@ class EditController: UITableViewController {
     @IBOutlet var citationTextView: UITextView!
     @IBOutlet var authorTextField: UITextField!
     @IBOutlet var sourceTextField: UITextField!
+    @IBOutlet var isFavouriteSwitch: UISwitch!
     
     var doAfterEdit: (() -> Void)?
     let storage = Storage()
@@ -24,11 +25,13 @@ class EditController: UITableViewController {
             citation.text = citationTextView.text
             citation.author = authorTextField.text
             citation.source = sourceTextField.text
+            citation.isFavourite = isFavouriteSwitch.isOn
             storage.editCitation(citation)
         } else {
             let item = CitationForSave(text: citationTextView.text!,
                                        author: authorTextField.text ?? "",
-                                       source: sourceTextField.text ?? "")
+                                       source: sourceTextField.text ?? "",
+                                       isFavourite: isFavouriteSwitch.isOn)
             storage.saveCitation(item)
         }
         
@@ -42,6 +45,7 @@ class EditController: UITableViewController {
         citationTextView.text = editedCitation?.text ?? tempCitation.text
         authorTextField.text = editedCitation?.author ?? tempCitation.author
         sourceTextField.text = editedCitation?.source ?? tempCitation.source
+        isFavouriteSwitch.isOn = editedCitation?.isFavourite ?? tempCitation.isFavourite
         citationTextView.becomeFirstResponder()
 //        citationTextView.isFavourite = tempCitation.isFavourite
         // Uncomment the following line to preserve selection between presentations
@@ -60,7 +64,7 @@ class EditController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
     }
 
     /*
