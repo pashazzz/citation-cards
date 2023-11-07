@@ -24,6 +24,7 @@ struct CitationForSave: CitationForSaveProtocol {
 
 protocol StorageProtocol {
     func getAllCitations(inOrder: SortOrder) -> [Citation]
+    func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
     func saveCitation(_ item: CitationForSaveProtocol) -> Void
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
     func removeCitation(_ item: Citation) -> Void
@@ -36,6 +37,20 @@ class Storage: StorageProtocol {
         var items: [Citation] = []
         let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
         let createdAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
+        fetchRequest.sortDescriptors = [createdAtSortDescriptor]
+        do {
+            items = try context.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+        return items
+    }
+    
+    func getFavouriteCitations(inOrder: SortOrder) -> [Citation] {
+        var items: [Citation] = []
+        let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
+        let createdAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
+        fetchRequest.predicate = NSPredicate(format: "isFavourite == 1")
         fetchRequest.sortDescriptors = [createdAtSortDescriptor]
         do {
             items = try context.fetch(fetchRequest)

@@ -7,49 +7,81 @@
 
 import UIKit
 
-class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    var citations: [Citation?] = []
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let citation: Citation? = citations[indexPath.row] ?? nil
-        let cell = tableView.dequeueReusableCell(withIdentifier: "citation", for: indexPath) as! CitationCell
-//        cell.caption.text = citation?.text
-//        cell.author.text = citation?.author
-
-        return cell
-    }
-    
-    
-    // create table for citation list
-    let tableView: UITableView = {
-        let table = UITableView()
-        table.register(CitationCell.self, forCellReuseIdentifier: "citation")
-        
-        return table
-    }()
+class FavouritesController: UITableViewController {
+    var citations: [Citation] = []
+    var sortOrder: SortOrder = .newestFirst
+    let storage = Storage()
+    let settings = Settings()
 
     private func updTableView() {
+        sortOrder = settings.getSortOrder()
+        citations = storage.getFavouriteCitations(inOrder: sortOrder)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return citations.count
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Favourites"
         
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = view.bounds
         
+        updTableView()
+    }
+
+    // display cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "citationCell", for: indexPath) as! CitationCell
         
-//        updTableView()
+        let citation = citations[indexPath.row]
+        cell.caption?.text = citation.text
+        cell.author?.text = citation.author
+        cell.source?.text = citation.source
         
+        // createdAt or updatedAt
+        let isModified = citation.updatedAt! > citation.createdAt!
+        let dateTime = isModified ? citation.updatedAt! : citation.createdAt!
+        let dateCaption = "\(isModified ? "Updated at:" : "Created at:") \(DateTimeHelper.getDateTimeString(from: dateTime))"
+        cell.date?.text = dateCaption
+
+        return cell
+    }
+    
+    // commit
+    // delete row on click delete action on edit
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let citation = citations[indexPath.row]
+        storage.removeCitation(citation)
+        updTableView()
+    }
+    
+    // swipe rightward actions
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") {[unowned self] _, _, _ in
+            let citation = citations[indexPath.row]
+            let editScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditController") as! EditController
+            editScreen.editedCitation = citation
+            editScreen.doAfterEdit = {[unowned self] in
+                updTableView()
+            }
+            navigationController?.pushViewController(editScreen, animated: true)
+        }
+        editAction.backgroundColor = .systemOrange
+        
+        return UISwipeActionsConfiguration(actions: [editAction])
     }
     
 
