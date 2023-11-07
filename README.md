@@ -23,9 +23,10 @@ Use the widgets to always have the one on your phone screen.
         - create - redirect to the screen with static cells for all needed to create a new citation
             - think, how to create a new tag or use existed
         - do we need the 'edit' button?
+        - font size selector; find out how to use tooltips
     - List of all citations, sorted be recently modified
         - on the top display one of favourites
-        - by click on item copy the whole meaning data for share it by paste anywhere
+        - by click on item copy the whole meaning data for share it by paste anywhere; display faded message "Copied in clipboard!"
 - Favourites
     - the same like main, but only for marked
 - Settings
