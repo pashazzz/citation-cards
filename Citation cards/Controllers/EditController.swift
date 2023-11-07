@@ -42,6 +42,7 @@ class EditController: UITableViewController {
         citationTextView.text = editedCitation?.text ?? tempCitation.text
         authorTextField.text = editedCitation?.author ?? tempCitation.author
         sourceTextField.text = editedCitation?.source ?? tempCitation.source
+        citationTextView.becomeFirstResponder()
 //        citationTextView.isFavourite = tempCitation.isFavourite
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
