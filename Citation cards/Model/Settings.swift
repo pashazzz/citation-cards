@@ -15,6 +15,8 @@ enum SortOrder: String {
 protocol SettingsProtocol {
     func getSortOrder() -> SortOrder
     func setSortOrder(order: SortOrder) -> Void
+    func getOnlyFavourites() -> Bool
+    func setOnlyFavourites(_: Bool) -> Void
 }
 
 class Settings: SettingsProtocol {
@@ -32,5 +34,17 @@ class Settings: SettingsProtocol {
     
     public func setSortOrder(order: SortOrder) {
         storage.setValue(order.rawValue, forKey: "order")
+    }
+    
+    public func getOnlyFavourites() -> Bool {
+        var onlyFavourites = storage.value(forKey: "displayOnlyFavourites") as? Bool
+        if onlyFavourites == nil {
+            onlyFavourites = false
+            setOnlyFavourites(false)
+        }
+        return onlyFavourites!
+    }
+    public func setOnlyFavourites(_ isTrue: Bool) {
+        storage.setValue(isTrue, forKey: "displayOnlyFavourites")
     }
 }

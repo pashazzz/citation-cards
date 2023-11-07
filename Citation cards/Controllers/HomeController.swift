@@ -8,18 +8,12 @@
 import UIKit
 
 class HomeController: UITableViewController {
-    var citations: [Citation] = []
-    var sortOrder: SortOrder = .newestFirst
     let storage = Storage()
     let settings = Settings()
-
-    private func updTableView() {
-        sortOrder = settings.getSortOrder()
-        citations = storage.getAllCitations(inOrder: sortOrder)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
+    
+    var citations: [Citation] = []
+    var sortOrder: SortOrder = .newestFirst
+    var onlyFavourites: Bool = false
     
     @IBAction func showSortOptions(_ sender: UIBarItem) {
         let sheet = UIAlertController(title: "Sorting", message: nil, preferredStyle: .actionSheet)
@@ -42,14 +36,27 @@ class HomeController: UITableViewController {
         present(sheet, animated: true)
     }
     
+    @IBOutlet var onlyFavouritesButton: UIBarItem!
+    @IBAction func toggleOnlyFavourites(_ sender: UIBarItem) {
+        settings.setOnlyFavourites(!settings.getOnlyFavourites())
+        updTableView()
+    }
+    
+    private func updTableView() {
+        sortOrder = settings.getSortOrder()
+        onlyFavourites = settings.getOnlyFavourites()
+        onlyFavouritesButton.title = "\(onlyFavourites ? "\u{25C9}" : "\u{25CB}") Only favourites"
+        citations = onlyFavourites ? storage.getFavouriteCitations(inOrder: sortOrder) : storage.getAllCitations(inOrder: sortOrder)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
-        navigationItem.title = "Home"
-        
-        // MARK: action buttons
-        navigationItem.leftBarButtonItems = [editButtonItem]
+        navigationItem.title = "Citations"
         
         updTableView()
         // Uncomment the following line to preserve selection between presentations

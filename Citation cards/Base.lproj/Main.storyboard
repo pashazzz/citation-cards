@@ -29,11 +29,11 @@
             </objects>
             <point key="canvasLocation" x="-2406" y="-606"/>
         </scene>
-        <!--Home-->
+        <!--Citations-->
         <scene sceneID="Up6-GR-aJK">
             <objects>
                 <navigationController id="HEe-p5-B1o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" selectedImage="house.fill" id="7g4-yI-A8Y"/>
+                    <tabBarItem key="tabBarItem" title="Citations" image="list.bullet" catalog="system" selectedImage="list.bullet" id="7g4-yI-A8Y"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iTa-Wf-7cP">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -54,13 +54,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8TC-EV-mfQ">
+                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Tua-6w-qca">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
-                                <barButtonItem title="Sort" style="plain" id="bKz-O4-qqb">
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="0wg-HD-79B"/>
+                                <barButtonItem title="Only fafourites" style="plain" id="UxB-jJ-LAf">
                                     <connections>
-                                        <action selector="showSortOptions:" destination="i0h-oE-zJx" id="F0q-QG-dnE"/>
+                                        <action selector="toggleOnlyFavourites:" destination="i0h-oE-zJx" id="LFX-w2-NGz"/>
                                     </connections>
                                 </barButtonItem>
                             </items>
@@ -148,12 +149,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="jaP-o7-6cZ">
+                        <barButtonItem key="leftBarButtonItem" title="Sort" id="bKz-O4-qqb">
+                            <connections>
+                                <action selector="showSortOptions:" destination="i0h-oE-zJx" id="F0q-QG-dnE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dDM-jT-oxA">
                             <connections>
                                 <segue destination="AmH-FP-Ncl" kind="show" identifier="EditController" id="Ns5-gz-y72"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="onlyFavouritesButton" destination="UxB-jJ-LAf" id="Z0w-hG-1sI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCt-Hi-5RW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -406,11 +415,11 @@
             </objects>
             <point key="canvasLocation" x="-1269" y="148"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favourites-->
         <scene sceneID="jzQ-HL-UiE">
             <objects>
                 <navigationController id="UcL-Uz-YZe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="zFl-so-yHT"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="star.fill" catalog="system" selectedImage="star.fill" id="zFl-so-yHT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IYP-yg-rnY">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -426,8 +435,9 @@
     </scenes>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
-        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
