@@ -109,11 +109,16 @@ class HomeController: UITableViewController {
     }
     
     // commit
-    // delete row on click delete action on edit
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let citation = citations[indexPath.row]
-        storage.removeCitation(citation)
-        updTableView()
+    // archive row on tap archive action on leftward swipe
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let archiveAction = UIContextualAction(style: .normal, title: "Archive") {[unowned self] _, _, _ in
+            let citation = citations[indexPath.row]
+            storage.archiveCitation(citation)
+            updTableView()
+        }
+        archiveAction.backgroundColor = .systemYellow
+        
+        return UISwipeActionsConfiguration(actions: [archiveAction])
     }
     
     // swipe rightward actions

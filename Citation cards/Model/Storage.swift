@@ -27,16 +27,19 @@ protocol StorageProtocol {
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
     func saveCitation(_ item: CitationForSaveProtocol) -> Void
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
+    func archiveCitation(_ item: Citation) -> Void
     func removeCitation(_ item: Citation) -> Void
 }
 
 class Storage: StorageProtocol {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let notArchivedPredicate = NSPredicate(format: "archivedAt == NULL")
     
     func getAllCitations(inOrder: SortOrder) -> [Citation] {
         var items: [Citation] = []
         let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
         let createdAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
+        fetchRequest.predicate = notArchivedPredicate
         fetchRequest.sortDescriptors = [createdAtSortDescriptor]
         do {
             items = try context.fetch(fetchRequest)
@@ -50,7 +53,11 @@ class Storage: StorageProtocol {
         var items: [Citation] = []
         let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
         let createdAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
-        fetchRequest.predicate = NSPredicate(format: "isFavourite == 1")
+        let isFavouritePredicate = NSPredicate(format: "isFavourite == 1")
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            isFavouritePredicate,
+            notArchivedPredicate
+        ])
         fetchRequest.sortDescriptors = [createdAtSortDescriptor]
         do {
             items = try context.fetch(fetchRequest)
@@ -84,6 +91,16 @@ class Storage: StorageProtocol {
             try context.save()
         } catch {
             print("Cannot edit item: \(String(describing: item.id)), \(String(describing: item.text))")
+            print(error)
+        }
+    }
+    
+    func archiveCitation(_ item: Citation) {
+        item.archivedAt = Date()
+        do {
+            try context.save()
+        } catch {
+            print("Cannot archive item: \(item.id), \(String(describing: item.text))")
             print(error)
         }
     }

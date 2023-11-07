@@ -2,7 +2,7 @@
 //  Citation+CoreDataProperties.swift
 //  Citation cards
 //
-//  Created by Pavlo Malyshkin on 1.11.2023.
+//  Created by Pavlo Malyshkin on 7.11.2023.
 //
 //
 
@@ -16,12 +16,13 @@ extension Citation {
         return NSFetchRequest<Citation>(entityName: "Citation")
     }
 
-    @NSManaged public var text: String?
     @NSManaged public var author: String?
-    @NSManaged public var source: String?
     @NSManaged public var createdAt: Date?
-    @NSManaged public var updatedAt: Date?
     @NSManaged public var isFavourite: Bool
+    @NSManaged public var source: String?
+    @NSManaged public var text: String?
+    @NSManaged public var updatedAt: Date?
+    @NSManaged public var archivedAt: Date?
     @NSManaged public var citationToTag: NSSet?
 
 }
