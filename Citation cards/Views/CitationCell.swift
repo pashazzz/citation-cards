@@ -11,6 +11,7 @@ class CitationCell: UITableViewCell {
     @IBOutlet var caption: UILabel!
     @IBOutlet var author: UILabel!
     @IBOutlet var source: UILabel!
+    @IBOutlet var date: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

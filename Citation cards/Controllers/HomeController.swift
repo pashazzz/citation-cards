@@ -79,6 +79,12 @@ class HomeController: UITableViewController {
         cell.caption?.text = citation.text
         cell.author?.text = citation.author
         cell.source?.text = citation.source
+        
+        // createdAt or updatedAt
+        let isModified = citation.updatedAt! > citation.createdAt!
+        let dateTime = isModified ? citation.updatedAt! : citation.createdAt!
+        let dateCaption = "\(isModified ? "Updated at:" : "Created at:") \(DateTimeHelper.getDateTimeString(from: dateTime))"
+        cell.date?.text = dateCaption
 
         return cell
     }

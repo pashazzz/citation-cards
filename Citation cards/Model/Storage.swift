@@ -46,13 +46,14 @@ class Storage: StorageProtocol {
     }
     
     func saveCitation(_ item: CitationForSaveProtocol) {
+        let date = Date()
         let citation = Citation(context: context)
         citation.text = item.text
         citation.author = item.author
         citation.source = item.source
         citation.isFavourite = item.isFavourite
-        citation.createdAt = Date()
-        citation.updatedAt = Date()
+        citation.createdAt = date
+        citation.updatedAt = date
         do {
             try context.save()
         } catch {
