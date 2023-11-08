@@ -133,6 +133,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="t6I-2m-RmA" secondAttribute="bottom" constant="8" id="uDh-ui-Eiq"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="author" destination="Bx4-dT-UmX" id="KEz-Wl-mbp"/>
                                     <outlet property="caption" destination="N5A-EY-uRJ" id="ulb-qj-4gi"/>

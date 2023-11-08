@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeController: UITableViewController {
+class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     let storage = Storage()
     let settings = Settings()
     
@@ -80,6 +80,19 @@ class HomeController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return citations.count
     }
+    
+    // copy to clipboard on long press
+    @objc func longPressHandler2(_ gestureReconizer: UILongPressGestureRecognizer) {
+        guard gestureReconizer.state != .began else { return }
+        let point = gestureReconizer.location(in: self.tableView)
+        let indexPath = self.tableView?.indexPathForRow(at: point)
+        var citationString: String = "«\(citations[indexPath!.row].text!)»"
+        if citations[indexPath!.row].author != "" {
+            citationString += " \(citations[indexPath!.row].author!)"
+        }
+        
+        UIPasteboard.general.string = citationString
+    }
 
     // display cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,6 +120,12 @@ class HomeController: UITableViewController {
             storage.editCitation(citation, needToModifyDate: false)
             updTableView()
         }
+        
+        // adding recognizer of long press gesture
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler2))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delegate = self
+        cell.addGestureRecognizer(lpgr)
 
         return cell
     }
