@@ -25,9 +25,11 @@ struct CitationForSave: CitationForSaveProtocol {
 protocol StorageProtocol {
     func getAllCitations(inOrder: SortOrder) -> [Citation]
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
+    func getArchivedCitations() -> [Citation]
     func saveCitation(_ item: CitationForSaveProtocol) -> Void
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
     func archiveCitation(_ item: Citation) -> Void
+    func restoreCitation(_ item: Citation) -> Void
     func removeCitation(_ item: Citation) -> Void
 }
 
@@ -67,6 +69,21 @@ class Storage: StorageProtocol {
         return items
     }
     
+    func getArchivedCitations() -> [Citation] {
+        var items: [Citation] = []
+        let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
+        let archivedAtSortDescriptor = NSSortDescriptor(key: "archivedAt", ascending: false)
+        let isArchivedPredicate = NSPredicate(format: "archivedAt != nil")
+        fetchRequest.predicate = isArchivedPredicate
+        fetchRequest.sortDescriptors = [archivedAtSortDescriptor]
+        do {
+            items = try context.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+        return items
+    }
+    
     func saveCitation(_ item: CitationForSaveProtocol) {
         let date = Date()
         let citation = Citation(context: context)
@@ -97,6 +114,16 @@ class Storage: StorageProtocol {
     
     func archiveCitation(_ item: Citation) {
         item.archivedAt = Date()
+        do {
+            try context.save()
+        } catch {
+            print("Cannot archive item: \(item.id), \(String(describing: item.text))")
+            print(error)
+        }
+    }
+    
+    func restoreCitation(_ item: Citation) {
+        item.archivedAt = nil
         do {
             try context.save()
         } catch {

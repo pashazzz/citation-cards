@@ -1,5 +1,5 @@
 //
-//  FavouritesController.swift
+//  ArchivedController.swift
 //  Citation cards
 //
 //  Created by Pavlo Malyshkin on 1.11.2023.
@@ -7,15 +7,13 @@
 
 import UIKit
 
-class FavouritesController: UITableViewController {
+class ArchivedController: UITableViewController {
     var citations: [Citation] = []
-    var sortOrder: SortOrder = .newestFirst
     let storage = Storage()
     let settings = Settings()
 
     private func updTableView() {
-        sortOrder = settings.getSortOrder()
-        citations = storage.getFavouriteCitations(inOrder: sortOrder)
+        citations = storage.getArchivedCitations()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -52,10 +50,7 @@ class FavouritesController: UITableViewController {
         cell.author?.text = citation.author
         cell.source?.text = citation.source
         
-        // createdAt or updatedAt
-        let isModified = citation.updatedAt! > citation.createdAt!
-        let dateTime = isModified ? citation.updatedAt! : citation.createdAt!
-        let dateCaption = "\(isModified ? "Updated at:" : "Created at:") \(DateTimeHelper.getDateTimeString(from: dateTime))"
+        let dateCaption = "Archived at: \(DateTimeHelper.getDateTimeString(from: citation.archivedAt!))"
         cell.date?.text = dateCaption
 
         return cell
@@ -71,18 +66,14 @@ class FavouritesController: UITableViewController {
     
     // swipe rightward actions
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let editAction = UIContextualAction(style: .normal, title: "Edit") {[unowned self] _, _, _ in
+        let restoreAction = UIContextualAction(style: .normal, title: "Restore") {[unowned self] _, _, _ in
             let citation = citations[indexPath.row]
-            let editScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditController") as! EditController
-            editScreen.editedCitation = citation
-            editScreen.doAfterEdit = {[unowned self] in
-                updTableView()
-            }
-            navigationController?.pushViewController(editScreen, animated: true)
+            storage.restoreCitation(citation)
+            updTableView()
         }
-        editAction.backgroundColor = .systemOrange
+        restoreAction.backgroundColor = .systemGreen
         
-        return UISwipeActionsConfiguration(actions: [editAction])
+        return UISwipeActionsConfiguration(actions: [restoreAction])
     }
     
 

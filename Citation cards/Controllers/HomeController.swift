@@ -52,13 +52,16 @@ class HomeController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updTableView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
         navigationItem.title = "Citations"
         
-        updTableView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -107,8 +110,7 @@ class HomeController: UITableViewController {
 
         return cell
     }
-    
-    // commit
+
     // archive row on tap archive action on leftward swipe
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let archiveAction = UIContextualAction(style: .normal, title: "Archive") {[unowned self] _, _, _ in
@@ -120,6 +122,11 @@ class HomeController: UITableViewController {
         
         return UISwipeActionsConfiguration(actions: [archiveAction])
     }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        let citation = citations[indexPath.row]
+//        storage.archiveCitation(citation)
+//        updTableView()
+//    }
     
     // swipe rightward actions
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E15C0EC2AFA30A5008499E3 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15C0EB2AFA30A5008499E3 /* DateTimeHelper.swift */; };
+		3E15C0EE2AFBA81D008499E3 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */; };
 		3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DBC42AF54B5400312081 /* HomeController.swift */; };
 		3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E94B67A2AF95C3E00261BD7 /* Settings.swift */; };
 		3ECBCE322AF13CE000D509DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE312AF13CE000D509DB /* AppDelegate.swift */; };
@@ -16,8 +17,7 @@
 		3ECBCE3C2AF13CE000D509DB /* Citation_cards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE3A2AF13CE000D509DB /* Citation_cards.xcdatamodeld */; };
 		3ECBCE3E2AF13CE100D509DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ECBCE3D2AF13CE100D509DB /* Assets.xcassets */; };
 		3ECBCE412AF13CE100D509DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ECBCE3F2AF13CE100D509DB /* LaunchScreen.storyboard */; };
-		3ECBCE4B2AF2A10600D509DB /* FavouritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE4A2AF2A10600D509DB /* FavouritesController.swift */; };
-		3ECBCE4D2AF2A11D00D509DB /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE4C2AF2A11D00D509DB /* SettingsController.swift */; };
+		3ECBCE4B2AF2A10600D509DB /* ArchivedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE4A2AF2A10600D509DB /* ArchivedController.swift */; };
 		3ECBCE532AF2A70400D509DB /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE4F2AF2A70400D509DB /* Tag+CoreDataClass.swift */; };
 		3ECBCE542AF2A70400D509DB /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE502AF2A70400D509DB /* Tag+CoreDataProperties.swift */; };
 		3ECBCE552AF2A70400D509DB /* Citation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE512AF2A70400D509DB /* Citation+CoreDataClass.swift */; };
@@ -49,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		3E15C0EB2AFA30A5008499E3 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
+		3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		3E35DBC42AF54B5400312081 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3E94B67A2AF95C3E00261BD7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3ECBCE2E2AF13CE000D509DB /* Citation cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Citation cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,8 +61,7 @@
 		3ECBCE402AF13CE100D509DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ECBCE422AF13CE100D509DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ECBCE482AF13ED200D509DB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		3ECBCE4A2AF2A10600D509DB /* FavouritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesController.swift; sourceTree = "<group>"; };
-		3ECBCE4C2AF2A11D00D509DB /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		3ECBCE4A2AF2A10600D509DB /* ArchivedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedController.swift; sourceTree = "<group>"; };
 		3ECBCE4F2AF2A70400D509DB /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3ECBCE502AF2A70400D509DB /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3ECBCE512AF2A70400D509DB /* Citation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Citation+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				3E35DBC42AF54B5400312081 /* HomeController.swift */,
-				3ECBCE4A2AF2A10600D509DB /* FavouritesController.swift */,
-				3ECBCE4C2AF2A11D00D509DB /* SettingsController.swift */,
+				3ECBCE4A2AF2A10600D509DB /* ArchivedController.swift */,
+				3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */,
 				3ECBCEFC2AF401E800D509DB /* EditController.swift */,
 			);
 			path = Controllers;
@@ -328,14 +328,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ECBCE4D2AF2A11D00D509DB /* SettingsController.swift in Sources */,
-				3ECBCE4B2AF2A10600D509DB /* FavouritesController.swift in Sources */,
+				3ECBCE4B2AF2A10600D509DB /* ArchivedController.swift in Sources */,
 				3ECBCEFD2AF401E800D509DB /* EditController.swift in Sources */,
 				3ECBCE322AF13CE000D509DB /* AppDelegate.swift in Sources */,
 				3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */,
 				3ECBCE552AF2A70400D509DB /* Citation+CoreDataClass.swift in Sources */,
 				3ECBCE612AF2B66C00D509DB /* Storage.swift in Sources */,
 				3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */,
+				3E15C0EE2AFBA81D008499E3 /* SettingsController.swift in Sources */,
 				3ECBCE3C2AF13CE000D509DB /* Citation_cards.xcdatamodeld in Sources */,
 				3ECBCE562AF2A70400D509DB /* Citation+CoreDataProperties.swift in Sources */,
 				3E15C0EC2AFA30A5008499E3 /* DateTimeHelper.swift in Sources */,

@@ -12,6 +12,7 @@ Use the widgets to always have the one on your phone screen.
     - createdAt, Date
     - updatedAt, Date
     - isFavourite, Boolean
+    - archivedAt, Date? - if not NULL, it's archived
 - tag
     - tag, String
     - color, String // using something like 'blue' or '#2020AA'; are we use only limited colors, or can provide palette for user
@@ -31,6 +32,9 @@ Use the widgets to always have the one on your phone screen.
         - by click on item copy the whole meaning data for share it by paste anywhere; display faded message "Copied in clipboard!"
         - do not delete citations immediately - archive it
 - Tags
+    - Top bar with:
+        - 'Edit', on tap shows the alarm screen with list of tags
+            - on tap the delete icon it asking should remove only tag and save the citations with it or remove tag with citations
     - List with all existed tags
         - on tap on the tag, select it and display all citations with this tag; can be multiple
         - long tap - edit tag and choose other color
