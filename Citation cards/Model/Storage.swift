@@ -31,6 +31,7 @@ protocol StorageProtocol {
     func archiveCitation(_ item: Citation) -> Void
     func restoreCitation(_ item: Citation) -> Void
     func removeCitation(_ item: Citation) -> Void
+    func clearArchivedCitations() -> Void
 }
 
 class Storage: StorageProtocol {
@@ -138,6 +139,23 @@ class Storage: StorageProtocol {
             try context.save()
         } catch {
             print("Cannot delete item: \(item.id), \(String(describing: item.text))")
+            print(error)
+        }
+    }
+    
+    func clearArchivedCitations() {
+        var items: [Citation] = []
+        let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
+        let isArchivedPredicate = NSPredicate(format: "archivedAt != nil")
+        fetchRequest.predicate = isArchivedPredicate
+        do {
+            items = try context.fetch(fetchRequest)
+            for item in items {
+                context.delete(item)
+            }
+            try context.save()
+        } catch {
+            print("Cannot clear archived citations")
             print(error)
         }
     }

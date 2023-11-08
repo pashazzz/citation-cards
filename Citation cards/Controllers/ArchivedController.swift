@@ -11,6 +11,20 @@ class ArchivedController: UITableViewController {
     var citations: [Citation] = []
     let storage = Storage()
     let settings = Settings()
+    
+    @IBAction func clearArchveBtn(_ sender: UIBarButtonItem) {
+        let sheet = UIAlertController(title: "Clear all archived citations", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let deleteAction = UIAlertAction(title: "Delete all", style: .default) {[unowned self] _ in
+            storage.clearArchivedCitations()
+            updTableView()
+        }
+        sheet.addAction(cancelAction)
+        sheet.addAction(deleteAction)
+        
+        present(sheet, animated: true)
+    }
 
     private func updTableView() {
         citations = storage.getArchivedCitations()
