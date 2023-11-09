@@ -14,7 +14,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     var citations: [Citation] = []
     var sortOrder: SortOrder = .newestFirst
     var onlyFavourites: Bool = false
-    
+
     @IBAction func showSortOptions(_ sender: UIBarItem) {
         let sheet = UIAlertController(title: "Sorting", message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -52,6 +52,36 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    // TODO: now the popup glued to scene view, not device size
+//    private func displayPopup(caption: String) {
+//        print(self.view.frame.size.height)
+//        let popupView = UIView(frame: CGRect(x: 0, y: 520, width: self.view.frame.size.width , height: 80))
+//        popupView.backgroundColor = .gray
+//        popupView.alpha = 1.0
+//        popupView.layer.cornerRadius = 20
+//        popupView.frame = (popupView.frame.insetBy(dx: 10, dy: 10))
+//
+//        let label = UILabel(frame: popupView.bounds)
+//        label.bounds = label.bounds.insetBy(dx: 20, dy: 20)
+//        label.textColor = .black
+//        label.text = caption
+//        label.textAlignment = .center
+//        popupView.addSubview(label)
+//        
+//        UIView.transition(with: popupView, duration: 1.5, options: .curveEaseInOut, animations: {
+//            self.view.addSubview(popupView)
+//            popupView.center.y += 4
+//        }, completion: { _ in
+//            UIView.animate(withDuration: 1, delay: 1.0, options: .curveEaseInOut) {
+//                popupView.center.y -= 4
+//            } completion: { finished in
+//                print("completed animation")
+//                // remember to remove the popup when you're done!
+//                popupView.removeFromSuperview()
+//            }
+//        })
+//    }
+    
     override func viewWillAppear(_ animated: Bool) {
         updTableView()
     }
@@ -82,7 +112,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     // copy to clipboard on long press
-    @objc func longPressHandler2(_ gestureReconizer: UILongPressGestureRecognizer) {
+    @objc func longPressHandler(_ gestureReconizer: UILongPressGestureRecognizer) {
         guard gestureReconizer.state != .began else { return }
         let point = gestureReconizer.location(in: self.tableView)
         let indexPath = self.tableView?.indexPathForRow(at: point)
@@ -92,6 +122,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         }
         
         UIPasteboard.general.string = citationString
+//        displayPopup(caption: "Copied to clipboard")
     }
 
     // display cell
@@ -122,7 +153,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         }
         
         // adding recognizer of long press gesture
-        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler2))
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
         lpgr.minimumPressDuration = 0.5
         lpgr.delegate = self
         cell.addGestureRecognizer(lpgr)
@@ -141,11 +172,6 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         
         return UISwipeActionsConfiguration(actions: [archiveAction])
     }
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        let citation = citations[indexPath.row]
-//        storage.archiveCitation(citation)
-//        updTableView()
-//    }
     
     // swipe rightward actions
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
