@@ -143,6 +143,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
             let citation = citations[indexPath.row]
             storage.archiveCitation(citation)
             updTableView()
+            displayPopup(withCaption: "Archived")
         }
         archiveAction.backgroundColor = .systemYellow
         

@@ -11,6 +11,7 @@ class ArchivedController: UITableViewController {
     var citations: [Citation] = []
     let storage = Storage()
     let settings = Settings()
+    let notificationPopup = PopupNotification()
     
     @IBAction func clearArchveBtn(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: "Clear all archived citations", message: nil, preferredStyle: .actionSheet)
@@ -31,6 +32,11 @@ class ArchivedController: UITableViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    private func displayPopup(withCaption: String) {
+        notificationPopup.setConnectedController(self)
+        notificationPopup.displayNotification(withCaption: withCaption)
     }
 
     // MARK: - Table view data source
@@ -76,6 +82,7 @@ class ArchivedController: UITableViewController {
         let citation = citations[indexPath.row]
         storage.removeCitation(citation)
         updTableView()
+        displayPopup(withCaption: "Removed")
     }
     
     // swipe rightward actions
@@ -84,6 +91,7 @@ class ArchivedController: UITableViewController {
             let citation = citations[indexPath.row]
             storage.restoreCitation(citation)
             updTableView()
+            displayPopup(withCaption: "Restored")
         }
         restoreAction.backgroundColor = .systemGreen
         
