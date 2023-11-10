@@ -10,6 +10,7 @@ import UIKit
 class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     let storage = Storage()
     let settings = Settings()
+    let notificationPopup = PopupNotification()
     
     var citations: [Citation] = []
     var sortOrder: SortOrder = .newestFirst
@@ -51,38 +52,10 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
             self.tableView.reloadData()
         }
     }
-    
-    // TODO: refactor: separate it into View class
-    private func displayPopup(caption: String) {
-        let popupView = UIView(frame: CGRect(x: 0, y: UIWindow().bounds.height - 132, width: self.view.bounds.width , height: 40))
-//        let popupView = UIView(frame: CGRect(x: 0, y: 620, width: self.view.bounds.width , height: 40))
-        popupView.backgroundColor = .gray
-        popupView.alpha = 1.0
-        popupView.layer.cornerRadius = 20
-        popupView.frame = (popupView.frame.insetBy(dx: 20, dy: 0))
-        popupView.bringSubviewToFront(self.view)
 
-        let label = UILabel(frame: popupView.bounds)
-        label.bounds = label.bounds.insetBy(dx: 4, dy: 4)
-        label.textColor = .white
-        label.text = caption
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textAlignment = .center
-        popupView.addSubview(label)
-        
-        UIView.transition(with: popupView, duration: 1.5, options: .curveEaseInOut, animations: {
-//            self.view.addSubview(popupView)
-            self.tabBarController?.view.addSubview(popupView)
-            popupView.center.y += 4
-        }, completion: { _ in
-            UIView.animate(withDuration: 1, delay: 1.0, options: .curveEaseInOut) {
-                popupView.center.y -= 4
-            } completion: { finished in
-                print("completed animation")
-                // remember to remove the popup when you're done!
-                popupView.removeFromSuperview()
-            }
-        })
+    private func displayPopup(withCaption: String) {
+        notificationPopup.setConnectedController(self)
+        notificationPopup.displayNotification(withCaption: withCaption)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +98,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         }
         
         UIPasteboard.general.string = citationString
-        displayPopup(caption: "Copied to clipboard")
+        displayPopup(withCaption: "Copied to clipboard")
     }
 
     // display cell
