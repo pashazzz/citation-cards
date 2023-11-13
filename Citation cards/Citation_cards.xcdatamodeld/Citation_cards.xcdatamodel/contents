@@ -12,6 +12,7 @@
     </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="tag" optional="YES" attributeType="String"/>
         <relationship name="tagToCitation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Citation" inverseName="citationToTag" inverseEntity="Citation"/>
     </entity>

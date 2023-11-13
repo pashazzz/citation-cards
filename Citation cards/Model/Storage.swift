@@ -22,6 +22,14 @@ struct CitationForSave: CitationForSaveProtocol {
     var isFavourite: Bool = false
 }
 
+protocol TagForSaveProtocol {
+    var tag: String {get set}
+}
+
+struct TagForSave: TagForSaveProtocol {
+    var tag: String = ""
+}
+
 protocol StorageProtocol {
     func getAllCitations(inOrder: SortOrder) -> [Citation]
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
@@ -32,21 +40,27 @@ protocol StorageProtocol {
     func restoreCitation(_ item: Citation) -> Void
     func removeCitation(_ item: Citation) -> Void
     func clearArchivedCitations() -> Void
+    
+    func getAllTags() -> [Tag]
+    func createTag(_ item: TagForSaveProtocol) -> Void
 }
 
 class Storage: StorageProtocol {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let notArchivedPredicate = NSPredicate(format: "archivedAt == NULL")
     
+    // MARK: Citations
     func getAllCitations(inOrder: SortOrder) -> [Citation] {
         var items: [Citation] = []
         let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
-        let createdAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
+        let updatedAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
         fetchRequest.predicate = notArchivedPredicate
-        fetchRequest.sortDescriptors = [createdAtSortDescriptor]
+        fetchRequest.sortDescriptors = [updatedAtSortDescriptor]
         do {
             items = try context.fetch(fetchRequest)
         } catch {
+            print("Cannot get all citations")
+            print(error)
             return []
         }
         return items
@@ -55,16 +69,18 @@ class Storage: StorageProtocol {
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation] {
         var items: [Citation] = []
         let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
-        let createdAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
+        let updatedAtSortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: inOrder == SortOrder.newestFirst ? false : true)
         let isFavouritePredicate = NSPredicate(format: "isFavourite == 1")
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             isFavouritePredicate,
             notArchivedPredicate
         ])
-        fetchRequest.sortDescriptors = [createdAtSortDescriptor]
+        fetchRequest.sortDescriptors = [updatedAtSortDescriptor]
         do {
             items = try context.fetch(fetchRequest)
         } catch {
+            print("Cannot get favourites citations")
+            print(error)
             return []
         }
         return items
@@ -80,6 +96,8 @@ class Storage: StorageProtocol {
         do {
             items = try context.fetch(fetchRequest)
         } catch {
+            print("Cannot get archived citations")
+            print(error)
             return []
         }
         return items
@@ -97,7 +115,8 @@ class Storage: StorageProtocol {
         do {
             try context.save()
         } catch {
-            //
+            print("Cannot save citation")
+            print(error)
         }
     }
     
@@ -156,6 +175,32 @@ class Storage: StorageProtocol {
             try context.save()
         } catch {
             print("Cannot clear archived citations")
+            print(error)
+        }
+    }
+    
+    // MARK: Tags
+    func getAllTags() -> [Tag] {
+        var items: [Tag] = []
+        let fetchRequest: NSFetchRequest<Tag> = Tag.fetchRequest()
+        do {
+            items = try context.fetch(fetchRequest)
+        } catch {
+            print("Cannot get all tags")
+            print(error)
+            return []
+        }
+        return items
+    }
+    
+    func createTag(_ item: TagForSaveProtocol) {
+        let tag = Tag(context: context)
+        tag.tag = item.tag
+        tag.createdAt = Date()
+        do {
+            try context.save()
+        } catch {
+            print("Cannot save tag")
             print(error)
         }
     }

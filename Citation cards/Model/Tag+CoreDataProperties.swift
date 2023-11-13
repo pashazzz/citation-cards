@@ -2,7 +2,7 @@
 //  Tag+CoreDataProperties.swift
 //  Citation cards
 //
-//  Created by Pavlo Malyshkin on 1.11.2023.
+//  Created by Pavlo Malyshkin on 13.11.2023.
 //
 //
 
@@ -16,8 +16,9 @@ extension Tag {
         return NSFetchRequest<Tag>(entityName: "Tag")
     }
 
-    @NSManaged public var tag: String?
     @NSManaged public var color: String?
+    @NSManaged public var tag: String?
+    @NSManaged public var createdAt: Date?
     @NSManaged public var tagToCitation: NSSet?
 
 }

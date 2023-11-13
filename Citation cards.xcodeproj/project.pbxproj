@@ -10,6 +10,7 @@
 		3E15C0EC2AFA30A5008499E3 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15C0EB2AFA30A5008499E3 /* DateTimeHelper.swift */; };
 		3E15C0EE2AFBA81D008499E3 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */; };
 		3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */; };
+		3E2D555C2AFE493500FCB9DE /* TagController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D555B2AFE493500FCB9DE /* TagController.swift */; };
 		3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DBC42AF54B5400312081 /* HomeController.swift */; };
 		3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E94B67A2AF95C3E00261BD7 /* Settings.swift */; };
 		3ECBCE322AF13CE000D509DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE312AF13CE000D509DB /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		3E15C0EB2AFA30A5008499E3 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
 		3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
+		3E2D555B2AFE493500FCB9DE /* TagController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagController.swift; sourceTree = "<group>"; };
 		3E35DBC42AF54B5400312081 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3E94B67A2AF95C3E00261BD7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3ECBCE2E2AF13CE000D509DB /* Citation cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Citation cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 				3ECBCE4A2AF2A10600D509DB /* ArchivedController.swift */,
 				3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */,
 				3ECBCEFC2AF401E800D509DB /* EditController.swift */,
+				3E2D555B2AFE493500FCB9DE /* TagController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				3ECBCE4B2AF2A10600D509DB /* ArchivedController.swift in Sources */,
 				3ECBCEFD2AF401E800D509DB /* EditController.swift in Sources */,
 				3ECBCE322AF13CE000D509DB /* AppDelegate.swift in Sources */,
+				3E2D555C2AFE493500FCB9DE /* TagController.swift in Sources */,
 				3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */,
 				3ECBCE552AF2A70400D509DB /* Citation+CoreDataClass.swift in Sources */,
 				3ECBCE612AF2B66C00D509DB /* Storage.swift in Sources */,
