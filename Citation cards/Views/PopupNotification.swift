@@ -8,21 +8,16 @@
 import UIKit
 
 protocol PopupNotificationProtocol {
-    var connectToView: UIViewController? {get set}
-    var label: UILabel {get set}
-    var yFromBottom: CGFloat {get set}
-    var animationDuration: TimeInterval {get set}
-    var delayDuration: TimeInterval {get set}
     func setConnectedController(_ controller: UIViewController)
     func displayNotification(withCaption: String) -> Void
 }
 
 class PopupNotification: UIView, PopupNotificationProtocol {
-    internal var connectToView: UIViewController?
-    internal var label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    internal var yFromBottom: CGFloat = 132
-    internal var animationDuration: TimeInterval = 0.1
-    internal var delayDuration: TimeInterval = 2.8
+    private var connectToView: UIViewController?
+    private var label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    private var yFromBottom: CGFloat = 132
+    private var animationDuration: TimeInterval = 0.1
+    private var delayDuration: TimeInterval = 2.8
 
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0 , height: 0))
