@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TagController: UITableViewController {
+class TagController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     let storage = Storage()
     let notificationPopup = PopupNotification()
     
@@ -16,6 +16,7 @@ class TagController: UITableViewController {
     
     @IBOutlet var createTagField: UITextField!
     @IBOutlet var tagsView: UIView!
+    @IBOutlet var tagsCollectionView: UICollectionView!
     
     @IBAction func onTapCreateTag(_ sender: UIButton) {
         guard createTagField.text! != "" else {
@@ -28,7 +29,45 @@ class TagController: UITableViewController {
         notificationPopup.displayNotification(withCaption: "Created")
         
         createTagField.text = ""
-        updTagsList()
+//        updTagsList()
+    }
+    
+    private func updTagsCollectionList() {
+        tags = storage.getAllTags()
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tags.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath)
+        
+        let label = UILabel(frame: CGRect())
+        label.text = tags[indexPath.row].tag
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15)
+        cell.backgroundColor = .systemBlue
+        cell.addSubview(label)
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 6
+        var labelSize = label.sizeThatFits(maxSizeOfTagLabel)
+        labelSize.width = labelSize.width > maxSizeOfTagLabel.width ? maxSizeOfTagLabel.width : labelSize.width
+        
+        label.frame = CGRect(origin: CGPoint(x: 6, y: 2), size: labelSize)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel(frame: CGRect())
+        label.text = tags[indexPath.row].tag
+        label.font = UIFont.systemFont(ofSize: 15)
+        let labelSize = label.sizeThatFits(CGSizeZero)
+        
+        return CGSize(width: labelSize.width + 12, height: labelSize.height + 5)
     }
     
     private func updTagsList() {
@@ -70,7 +109,8 @@ class TagController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updTagsList()
+//        updTagsList()
+        updTagsCollectionList()
         updTableView()
     }
 
@@ -78,6 +118,8 @@ class TagController: UITableViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Tags"
+        tagsCollectionView.dataSource = self
+        tagsCollectionView.delegate = self
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -150,4 +192,27 @@ class TagController: UITableViewController {
     }
     */
 
+}
+
+// MARK: Helpers
+// For positioning elements in UICollectionView
+class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+
+            layoutAttribute.frame.origin.x = leftMargin
+
+            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY , maxY)
+        }
+
+        return attributes
+    }
 }
