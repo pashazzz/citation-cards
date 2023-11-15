@@ -30,11 +30,24 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         
         createTagField.text = ""
 //        updTagsList()
+        updTagsCollectionList()
     }
     
     private func updTagsCollectionList() {
+        if tags.count > 0 {
+            var indexPathes: [IndexPath] = []
+            for index in (0...tags.count - 1) {
+                indexPathes.append(IndexPath(row: index, section: 0))
+            }
+            tags = []
+            self.tagsCollectionView.deleteItems(at: indexPathes)
+        }
+        
         tags = storage.getAllTags()
         
+        DispatchQueue.main.async {
+            self.tagsCollectionView.reloadData()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,6 +71,12 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         
         label.frame = CGRect(origin: CGPoint(x: 6, y: 2), size: labelSize)
         
+//        // adding recognizer of long press gesture
+//        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
+//        lpgr.minimumPressDuration = 0.5
+//        lpgr.delegate = self
+//        cell.addGestureRecognizer(lpgr)
+        
         return cell
     }
     
@@ -69,6 +88,21 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         
         return CGSize(width: labelSize.width + 12, height: labelSize.height + 5)
     }
+    
+//    // handle long press
+//    @objc func longPressHandler(_ gestureReconizer: UILongPressGestureRecognizer) {
+//        guard gestureReconizer.state != .began else { return }
+//        let point = gestureReconizer.location(in: self.tagsCollectionView)
+//        let indexPath = self.tagsCollectionView.indexPathForItem(at: point)
+//        let tag: String = "«\(tags[indexPath!.row].tag!)»"
+//        print(tag)
+//        if citations[indexPath!.row].author != "" {
+//            citationString += " \(citations[indexPath!.row].author!)"
+//        }
+//        
+//        UIPasteboard.general.string = citationString
+//        displayPopup(withCaption: "Copied to clipboard")
+//    }
     
     private func updTagsList() {
         tags = storage.getAllTags()
@@ -104,14 +138,27 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    // for citations with selected tags
     private func updTableView() {
-        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
 //        updTagsList()
         updTagsCollectionList()
         updTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let tagsCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0))!
+        let citationsCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0))!
+        let size = tagsCollectionView.contentSize
+        // resize tags cell
+        tagsCell.frame = CGRect(x: tagsCell.frame.origin.x, y: tagsCell.frame.origin.y, width: tagsCell.frame.width, height: size.height + 26)
+        // shift the next cell
+        citationsCell.frame = CGRect(origin: CGPoint(x: citationsCell.frame.origin.x, y: tagsCell.frame.origin.y + tagsCell.frame.height), size: citationsCell.frame.size)
     }
 
     override func viewDidLoad() {
@@ -134,14 +181,15 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
     }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        guard let cell = tableView.cellForRow(at: indexPath) else { return UITableViewCell() }
+//        print(cell.reuseIdentifier ?? "nil")
+        
+//        cell.sizeToFit()
 
         return cell
     }
