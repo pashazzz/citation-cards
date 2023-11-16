@@ -178,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="GKx-PM-59M">
-                            <rect key="frame" x="0.0" y="165.66666805744171" width="393" height="44"/>
+                            <rect key="frame" x="0.0" y="209.66666793823242" width="393" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xzn-Ln-MlS">
@@ -226,15 +226,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagListCell" rowHeight="0.0" id="5nr-19-2nK">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="1.1920928955078125e-07"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagListCell" rowHeight="44" id="5nr-19-2nK">
+                                        <rect key="frame" x="0.0" y="94" width="393" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5nr-19-2nK" id="U1W-2r-VVa">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="1.1920928955078125e-07"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d13-0o-ImB">
-                                                    <rect key="frame" x="20" y="11" width="353" height="120"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d13-0o-ImB">
+                                                    <rect key="frame" x="20" y="11" width="353" height="22"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewLayout key="collectionViewLayout" id="yyj-2p-TW1" customClass="LeftAlignedCollectionViewFlowLayout" customModule="Citation_cards" customModuleProvider="target"/>
                                                     <cells>
@@ -258,7 +258,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="citationsWithTags" id="ayq-kC-NRh">
-                                        <rect key="frame" x="0.0" y="94.00000011920929" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="138" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ayq-kC-NRh" id="c4B-fY-Ya7">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>

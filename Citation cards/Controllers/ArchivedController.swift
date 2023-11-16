@@ -80,7 +80,7 @@ class ArchivedController: UITableViewController {
     // delete row on click delete action on edit
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let citation = citations[indexPath.row]
-        storage.removeCitation(citation)
+        storage.deleteCitation(citation)
         updTableView()
         displayPopup(withCaption: "Removed")
     }

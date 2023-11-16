@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TagController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class TagController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     let storage = Storage()
     let notificationPopup = PopupNotification()
     
@@ -41,13 +41,28 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
             }
             tags = []
             self.tagsCollectionView.deleteItems(at: indexPathes)
+            DispatchQueue.main.async {
+                self.tagsCollectionView.reloadData()
+            }
         }
-        
         tags = storage.getAllTags()
         
         DispatchQueue.main.async {
             self.tagsCollectionView.reloadData()
         }
+    }
+    
+    private func updCellsHeight() {
+        guard let createTagCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)),
+              let tagsCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)),
+              let citationsCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) else { return }
+        
+        let size = tagsCollectionView.contentSize
+        // resize tags cell
+        let tagsCellHeight = size.height + 26 < createTagCell.frame.height ? createTagCell.frame.height : size.height + 26
+        tagsCell.frame = CGRect(origin: tagsCell.frame.origin, size: CGSize(width: tagsCell.frame.width, height: tagsCellHeight))
+        // shift the next cell
+        citationsCell.frame = CGRect(origin: CGPoint(x: citationsCell.frame.origin.x, y: tagsCell.frame.origin.y + tagsCell.frame.height), size: citationsCell.frame.size)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,11 +86,11 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         
         label.frame = CGRect(origin: CGPoint(x: 6, y: 2), size: labelSize)
         
-//        // adding recognizer of long press gesture
-//        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
-//        lpgr.minimumPressDuration = 0.5
-//        lpgr.delegate = self
-//        cell.addGestureRecognizer(lpgr)
+        // adding recognizer of long press gesture
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delegate = self
+        cell.addGestureRecognizer(lpgr)
         
         return cell
     }
@@ -89,52 +104,107 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         return CGSize(width: labelSize.width + 12, height: labelSize.height + 5)
     }
     
-//    // handle long press
-//    @objc func longPressHandler(_ gestureReconizer: UILongPressGestureRecognizer) {
-//        guard gestureReconizer.state != .began else { return }
-//        let point = gestureReconizer.location(in: self.tagsCollectionView)
-//        let indexPath = self.tagsCollectionView.indexPathForItem(at: point)
-//        let tag: String = "«\(tags[indexPath!.row].tag!)»"
-//        print(tag)
-//        if citations[indexPath!.row].author != "" {
-//            citationString += " \(citations[indexPath!.row].author!)"
-//        }
-//        
-//        UIPasteboard.general.string = citationString
-//        displayPopup(withCaption: "Copied to clipboard")
-//    }
+    private func displayPopup(withCaption: String) {
+        notificationPopup.setConnectedController(self)
+        notificationPopup.displayNotification(withCaption: withCaption)
+    }
+    
+    // handle long press
+    @objc func longPressHandler(_ gestureReconizer: UILongPressGestureRecognizer) {
+        guard gestureReconizer.state != .began else { return }
+        let point = gestureReconizer.location(in: self.tagsCollectionView)
+        let indexPath = self.tagsCollectionView.indexPathForItem(at: point)
+        displayAlertOnTagLongPress(tag: tags[indexPath!.row])
+    }
+    
+    private func displayAlertOnTagLongPress(tag: Tag) {
+        let sheet = UIAlertController(title: tag.tag, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let renameTagAction = UIAlertAction(title: "Rename tag", style: .default) {[unowned self] _ in
+            let renameAlert = UIAlertController(title: tag.tag, message: "Rename tag", preferredStyle: .alert)
+            renameAlert.addTextField { textField in
+                textField.placeholder = "New tag name"
+            }
+            let renameButton = UIAlertAction(title: "Rename", style: .default) { _ in
+                guard let newName = renameAlert.textFields?[0].text else { return }
+                guard newName != tag.tag else { return }
+                tag.tag = newName
+                self.storage.editTag(tag)
+                
+                self.updTagsCollectionList()
+            }
+            
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            renameAlert.addAction(cancelButton)
+            renameAlert.addAction(renameButton)
+            
+            self.present(renameAlert, animated: true, completion: nil)
+        }
+        
+        let deleteTagAction = UIAlertAction(title: "Delete tag", style: .destructive) {[unowned self] _ in
+            let deleteAlert = UIAlertController(title: tag.tag, message: "Delete tag", preferredStyle: .alert)
+            let deleteButton = UIAlertAction(title: "Delete", style: .default) { _ in
+                self.storage.deleteTag(tag)
+                
+                self.updTagsCollectionList()
+            }
+            
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            deleteAlert.addAction(cancelButton)
+            deleteAlert.addAction(deleteButton)
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
+        
+        let deleteCitationsWithTagAction = UIAlertAction(title: "Delete citations with tag", style: .destructive) {[unowned self] _ in
+            updTagsCollectionList()
+        }
+        
+        sheet.addAction(cancelAction)
+        sheet.addAction(renameTagAction)
+        sheet.addAction(deleteTagAction)
+        sheet.addAction(deleteCitationsWithTagAction)
+        
+        present(sheet, animated: true)
+    }
+    
+    private func generateTagLabel(tag: Tag, lastLabel: UILabel?) -> UILabel {
+        let label = UILabel(frame: CGRect())
+        label.text = tag.tag
+        label.backgroundColor = .systemBlue
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 6
+        var labelSize = label.sizeThatFits(maxSizeOfTagLabel)
+        labelSize.width = labelSize.width > maxSizeOfTagLabel.width ? maxSizeOfTagLabel.width : labelSize.width
+        
+        var startXPoint = lastLabel != nil ? (lastLabel?.frame.origin.x)! + (lastLabel?.frame.width)! + 16 : 0
+        let isNeedNewLine = labelSize.width + startXPoint > self.view.bounds.width
+        // here +4 needed because after insets for frame and bounds the origin coordinates shifted
+        var startYPoint = lastLabel != nil ? (lastLabel?.frame.origin.y)! + 4 : 0
+        if isNeedNewLine {
+            startXPoint = 0
+            startYPoint += 34
+        }
+        
+        label.frame = CGRect(origin: CGPoint(x: startXPoint, y: startYPoint), size: labelSize)
+        label.frame = label.frame.insetBy(dx: -14, dy: -10)
+        label.bounds = label.bounds.insetBy(dx: 6, dy: 6)
+        
+        return label
+    }
     
     private func updTagsList() {
         tags = storage.getAllTags()
         var lastLabel: UILabel?
         
         for tag in tags {
-            let label = UILabel(frame: CGRect())
-            label.text = tag.tag
-            label.backgroundColor = .systemBlue
-            label.textColor = .white
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 15)
-            label.layer.masksToBounds = true
-            label.layer.cornerRadius = 6
-            tagsView.addSubview(label)
-            var labelSize = label.sizeThatFits(maxSizeOfTagLabel)
-            labelSize.width = labelSize.width > maxSizeOfTagLabel.width ? maxSizeOfTagLabel.width : labelSize.width
-            
-            var startXPoint = lastLabel != nil ? (lastLabel?.frame.origin.x)! + (lastLabel?.frame.width)! + 16 : 0
-            let isNeedNewLine = labelSize.width + startXPoint > self.view.bounds.width
-            // here +4 needed because after insets for frame and bounds the origin coordinates shifted
-            var startYPoint = lastLabel != nil ? (lastLabel?.frame.origin.y)! + 4 : 0
-            if isNeedNewLine {
-                startXPoint = 0
-                startYPoint += 34
-            }
-            
-            label.frame = CGRect(origin: CGPoint(x: startXPoint, y: startYPoint), size: labelSize)
-            label.frame = label.frame.insetBy(dx: -14, dy: -10)
-            label.bounds = label.bounds.insetBy(dx: 6, dy: 6)
-            
+            let label = generateTagLabel(tag: tag, lastLabel: lastLabel)
             lastLabel = label
+            tagsView.addSubview(label)
         }
     }
     
@@ -152,13 +222,7 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let tagsCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0))!
-        let citationsCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0))!
-        let size = tagsCollectionView.contentSize
-        // resize tags cell
-        tagsCell.frame = CGRect(x: tagsCell.frame.origin.x, y: tagsCell.frame.origin.y, width: tagsCell.frame.width, height: size.height + 26)
-        // shift the next cell
-        citationsCell.frame = CGRect(origin: CGPoint(x: citationsCell.frame.origin.x, y: tagsCell.frame.origin.y + tagsCell.frame.height), size: citationsCell.frame.size)
+        updCellsHeight()
     }
 
     override func viewDidLoad() {

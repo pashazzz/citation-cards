@@ -38,11 +38,13 @@ protocol StorageProtocol {
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
     func archiveCitation(_ item: Citation) -> Void
     func restoreCitation(_ item: Citation) -> Void
-    func removeCitation(_ item: Citation) -> Void
+    func deleteCitation(_ item: Citation) -> Void
     func clearArchivedCitations() -> Void
     
     func getAllTags() -> [Tag]
     func createTag(_ item: TagForSaveProtocol) -> Void
+    func editTag(_ item: Tag) -> Void
+    func deleteTag(_ item: Tag) -> Void
 }
 
 class Storage: StorageProtocol {
@@ -152,7 +154,7 @@ class Storage: StorageProtocol {
         }
     }
     
-    func removeCitation(_ item: Citation) {
+    func deleteCitation(_ item: Citation) {
         context.delete(item)
         do {
             try context.save()
@@ -201,6 +203,25 @@ class Storage: StorageProtocol {
             try context.save()
         } catch {
             print("Cannot save tag")
+            print(error)
+        }
+    }
+    
+    func editTag(_ item: Tag) {
+        do {
+            try context.save()
+        } catch {
+            print("Cannot edit tag: \(String(describing: item.id)), \(String(describing: item.tag))")
+            print(error)
+        }
+    }
+    
+    func deleteTag(_ item: Tag) {
+        context.delete(item)
+        do {
+            try context.save()
+        } catch {
+            print("Cannot delete tag: \(item.id), \(String(describing: item.tag))")
             print(error)
         }
     }
