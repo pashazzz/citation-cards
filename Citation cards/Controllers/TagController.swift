@@ -15,7 +15,6 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
     let maxSizeOfTagLabel = CGSize(width: 200, height: 20)
     
     @IBOutlet var createTagField: UITextField!
-    @IBOutlet var tagsView: UIView!
     @IBOutlet var tagsCollectionView: UICollectionView!
     
     @IBAction func onTapCreateTag(_ sender: UIButton) {
@@ -29,7 +28,6 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         notificationPopup.displayNotification(withCaption: "Created")
         
         createTagField.text = ""
-//        updTagsList()
         updTagsCollectionList()
     }
     
@@ -169,45 +167,6 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
         present(sheet, animated: true)
     }
     
-    private func generateTagLabel(tag: Tag, lastLabel: UILabel?) -> UILabel {
-        let label = UILabel(frame: CGRect())
-        label.text = tag.tag
-        label.backgroundColor = .systemBlue
-        label.textColor = .white
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 6
-        var labelSize = label.sizeThatFits(maxSizeOfTagLabel)
-        labelSize.width = labelSize.width > maxSizeOfTagLabel.width ? maxSizeOfTagLabel.width : labelSize.width
-        
-        var startXPoint = lastLabel != nil ? (lastLabel?.frame.origin.x)! + (lastLabel?.frame.width)! + 16 : 0
-        let isNeedNewLine = labelSize.width + startXPoint > self.view.bounds.width
-        // here +4 needed because after insets for frame and bounds the origin coordinates shifted
-        var startYPoint = lastLabel != nil ? (lastLabel?.frame.origin.y)! + 4 : 0
-        if isNeedNewLine {
-            startXPoint = 0
-            startYPoint += 34
-        }
-        
-        label.frame = CGRect(origin: CGPoint(x: startXPoint, y: startYPoint), size: labelSize)
-        label.frame = label.frame.insetBy(dx: -14, dy: -10)
-        label.bounds = label.bounds.insetBy(dx: 6, dy: 6)
-        
-        return label
-    }
-    
-    private func updTagsList() {
-        tags = storage.getAllTags()
-        var lastLabel: UILabel?
-        
-        for tag in tags {
-            let label = generateTagLabel(tag: tag, lastLabel: lastLabel)
-            lastLabel = label
-            tagsView.addSubview(label)
-        }
-    }
-    
     // for citations with selected tags
     private func updTableView() {
         DispatchQueue.main.async {
@@ -216,7 +175,6 @@ class TagController: UITableViewController, UICollectionViewDataSource, UICollec
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        updTagsList()
         updTagsCollectionList()
         updTableView()
     }

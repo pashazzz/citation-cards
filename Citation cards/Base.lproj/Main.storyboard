@@ -177,18 +177,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="GKx-PM-59M">
-                            <rect key="frame" x="0.0" y="209.66666793823242" width="393" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xzn-Ln-MlS">
-                                    <rect key="frame" x="8" y="8" width="377" height="27"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
                         <sections>
                             <tableViewSection id="B62-zb-hby">
                                 <cells>
@@ -279,7 +267,6 @@
                     <connections>
                         <outlet property="createTagField" destination="u2I-id-DxL" id="9Pu-qe-M1l"/>
                         <outlet property="tagsCollectionView" destination="d13-0o-ImB" id="DUJ-wk-uES"/>
-                        <outlet property="tagsView" destination="Xzn-Ln-MlS" id="Ypm-oo-vGV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjx-1q-fw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
