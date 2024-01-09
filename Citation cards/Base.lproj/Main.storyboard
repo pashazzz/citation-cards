@@ -282,13 +282,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sbe-N8-wk4">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagCell" id="Sbe-N8-wk4" userLabel="tagCell" customClass="TagCell" customModule="Citation_cards" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="39.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sbe-N8-wk4" id="bGk-Rp-9CE">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="39.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9T-6e-AGC">
+                                            <rect key="frame" x="20" y="10.999999999999998" width="353" height="17.333333333333329"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUV-mb-88t">
+                                                    <rect key="frame" x="0.0" y="0.0" width="314" height="17.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gat-4O-Uzg">
+                                                    <rect key="frame" x="314" y="0.0" width="39" height="17.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Q9T-6e-AGC" secondAttribute="bottom" id="Mz2-0q-2hZ"/>
+                                        <constraint firstItem="Q9T-6e-AGC" firstAttribute="leading" secondItem="bGk-Rp-9CE" secondAttribute="leadingMargin" id="T9b-FU-Pf6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Q9T-6e-AGC" secondAttribute="trailing" id="aCR-7k-L9k"/>
+                                        <constraint firstItem="Q9T-6e-AGC" firstAttribute="top" secondItem="bGk-Rp-9CE" secondAttribute="topMargin" id="kbq-sM-t7c"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="tagCount" destination="Gat-4O-Uzg" id="XEv-it-Baw"/>
+                                    <outlet property="tagName" destination="sUV-mb-88t" id="RId-Qx-277"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

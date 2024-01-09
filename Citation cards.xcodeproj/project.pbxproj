@@ -31,6 +31,7 @@
 		3ECBCEE22AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */; };
 		3ECBCEFD2AF401E800D509DB /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEFC2AF401E800D509DB /* EditController.swift */; };
 		3EE85BD32B4DA4E7005DC109 /* TagListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE85BD22B4DA4E7005DC109 /* TagListController.swift */; };
+		3EE85BD52B4DE78E005DC109 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE85BD42B4DE78E005DC109 /* TagCell.swift */; };
 		3EEDE20C2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDE20B2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3ECBCEFC2AF401E800D509DB /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
 		3EE85BD22B4DA4E7005DC109 /* TagListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListController.swift; sourceTree = "<group>"; };
+		3EE85BD42B4DE78E005DC109 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		3EEDE20B2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +190,7 @@
 				3ECBCE5C2AF2AA6D00D509DB /* CitationCell.swift */,
 				3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */,
 				3EEDE20B2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift */,
+				3EE85BD42B4DE78E005DC109 /* TagCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				3EEDE20C2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3E15C0EE2AFBA81D008499E3 /* SettingsController.swift in Sources */,
 				3ECBCE3C2AF13CE000D509DB /* Citation_cards.xcdatamodeld in Sources */,
+				3EE85BD52B4DE78E005DC109 /* TagCell.swift in Sources */,
 				3ECBCE562AF2A70400D509DB /* Citation+CoreDataProperties.swift in Sources */,
 				3E15C0EC2AFA30A5008499E3 /* DateTimeHelper.swift in Sources */,
 				3ECBCE342AF13CE000D509DB /* SceneDelegate.swift in Sources */,

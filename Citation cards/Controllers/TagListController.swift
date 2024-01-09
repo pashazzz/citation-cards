@@ -26,6 +26,7 @@ class TagListController: UITableViewController {
             self.notificationPopup.setConnectedController(self)
             self.notificationPopup.displayNotification(withCaption: "Created")
             
+            self.updTagsCollectionList()
         }
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -34,12 +35,27 @@ class TagListController: UITableViewController {
         
         self.present(createAlert, animated: true, completion: nil)
     }
+    
+    private func updTableView() {
+        tags = storage.getAllTags()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func updTagsCollectionList() {
+        tags = storage.getAllTags()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updTagsCollectionList()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -48,24 +64,21 @@ class TagListController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return tags.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell", for: indexPath) as! TagCell
+        cell.tagName?.text = tags[indexPath.row].tag
+        cell.tagCount?.text = String(0)
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
