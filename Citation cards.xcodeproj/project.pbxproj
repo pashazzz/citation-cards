@@ -30,6 +30,8 @@
 		3ECBCEE02AF3B4AE00D509DB /* Citation_cardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEDF2AF3B4AE00D509DB /* Citation_cardsUITests.swift */; };
 		3ECBCEE22AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */; };
 		3ECBCEFD2AF401E800D509DB /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCEFC2AF401E800D509DB /* EditController.swift */; };
+		3EE85BD32B4DA4E7005DC109 /* TagListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE85BD22B4DA4E7005DC109 /* TagListController.swift */; };
+		3EEDE20C2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEDE20B2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		3ECBCEDF2AF3B4AE00D509DB /* Citation_cardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsUITests.swift; sourceTree = "<group>"; };
 		3ECBCEE12AF3B4AE00D509DB /* Citation_cardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_cardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3ECBCEFC2AF401E800D509DB /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
+		3EE85BD22B4DA4E7005DC109 /* TagListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagListController.swift; sourceTree = "<group>"; };
+		3EEDE20B2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 				3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */,
 				3ECBCEFC2AF401E800D509DB /* EditController.swift */,
 				3E2D555B2AFE493500FCB9DE /* TagController.swift */,
+				3EE85BD22B4DA4E7005DC109 /* TagListController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			children = (
 				3ECBCE5C2AF2AA6D00D509DB /* CitationCell.swift */,
 				3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */,
+				3EEDE20B2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,12 +342,14 @@
 			files = (
 				3ECBCE4B2AF2A10600D509DB /* ArchivedController.swift in Sources */,
 				3ECBCEFD2AF401E800D509DB /* EditController.swift in Sources */,
+				3EE85BD32B4DA4E7005DC109 /* TagListController.swift in Sources */,
 				3ECBCE322AF13CE000D509DB /* AppDelegate.swift in Sources */,
 				3E2D555C2AFE493500FCB9DE /* TagController.swift in Sources */,
 				3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */,
 				3ECBCE552AF2A70400D509DB /* Citation+CoreDataClass.swift in Sources */,
 				3ECBCE612AF2B66C00D509DB /* Storage.swift in Sources */,
 				3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */,
+				3EEDE20C2B0639A90092E2AB /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				3E15C0EE2AFBA81D008499E3 /* SettingsController.swift in Sources */,
 				3ECBCE3C2AF13CE000D509DB /* Citation_cards.xcdatamodeld in Sources */,
 				3ECBCE562AF2A70400D509DB /* Citation+CoreDataProperties.swift in Sources */,

@@ -1,55 +1,43 @@
 //
-//  EditController.swift
+//  TagsListController.swift
 //  Citation cards
 //
-//  Created by Pavlo Malyshkin on 2.11.2023.
+//  Created by Pavlo Malyshkin on 9.1.2024.
 //
 
 import UIKit
 
-class EditController: UITableViewController {
-    @IBOutlet var citationTextView: UITextView!
-    @IBOutlet var authorTextField: UITextField!
-    @IBOutlet var sourceTextField: UITextField!
-    @IBOutlet var isFavouriteSwitch: UISwitch!
-    
-    @IBOutlet var tagsCollectionView: UICollectionView!
-    
-    var doAfterEdit: (() -> Void)?
+class TagListController: UITableViewController {
     let storage = Storage()
+    let notificationPopup = PopupNotification()
     
-    var tempCitation: CitationForSaveProtocol = CitationForSave(text: "")
-    var editedCitation: Citation?
+    var tags: [Tag] = []
     
-    @IBAction func onTapSaveButton(_ sender: UIBarButtonItem) {
-        // edited or new one
-        if let citation = editedCitation {
-            citation.text = citationTextView.text
-            citation.author = authorTextField.text
-            citation.source = sourceTextField.text
-            citation.isFavourite = isFavouriteSwitch.isOn
-            storage.editCitation(citation)
-        } else {
-            let item = CitationForSave(text: citationTextView.text!,
-                                       author: authorTextField.text ?? "",
-                                       source: sourceTextField.text ?? "",
-                                       isFavourite: isFavouriteSwitch.isOn)
-            storage.saveCitation(item)
+    @IBAction func onClickAddTag() {
+        let createAlert = UIAlertController(title: "Create new tag", message: nil, preferredStyle: .alert)
+        createAlert.addTextField { textField in
+            textField.placeholder = "Tag name"
+        }
+        let createButton = UIAlertAction(title: "Create", style: .default) { _ in
+            guard let tagName = createAlert.textFields?[0].text else { return }
+            let tagForSave = TagForSave(tag: tagName)
+            self.storage.createTag(tagForSave)
+            
+            self.notificationPopup.setConnectedController(self)
+            self.notificationPopup.displayNotification(withCaption: "Created")
+            
         }
         
-        doAfterEdit?()
-        navigationController?.popViewController(animated: true)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        createAlert.addAction(cancelButton)
+        createAlert.addAction(createButton)
+        
+        self.present(createAlert, animated: true, completion: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        citationTextView.text = editedCitation?.text ?? tempCitation.text
-        authorTextField.text = editedCitation?.author ?? tempCitation.author
-        sourceTextField.text = editedCitation?.source ?? tempCitation.source
-        isFavouriteSwitch.isOn = editedCitation?.isFavourite ?? tempCitation.isFavourite
-        citationTextView.becomeFirstResponder()
-//        citationTextView.isFavourite = tempCitation.isFavourite
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -60,12 +48,24 @@ class EditController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        // #warning Incomplete implementation, return the number of rows
+        return tags.count
     }
+
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -35,10 +35,10 @@ Use the widgets to always have the one on your phone screen.
     - Top bar with:
         - 'Edit', on tap shows the alarm screen with list of tags
             - on tap the delete icon it asking should remove only tag and save the citations with it or remove tag with citations
+    - Under top bar - field for creating a new tag; + button for choosing one of 10 colors
     - List with all existed tags
         - on tap on the tag, select it and display all citations with this tag; can be multiple
         - long tap - edit tag and choose other color
-    - In the bottom text field for creating a new tag; + button for choosing one of 10 colors
 - Settings
     - switcher, is need to display on the top of main screen the one favourite citation, by default - true
     - choosing the tags from which the citations will display on the widgets, by default - all
