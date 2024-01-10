@@ -49,7 +49,9 @@ class EditCitationTagsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editTagCell", for: indexPath) as! EditTagCell
         let plusImage = UIImage(systemName: "plus.circle.fill")
-        let minusImage = UIImage(systemName: "minus.circle.fill")
+//        let minusImage = UIImage(systemName: "minus.circle.fill")
+        
+        cell.delegate = self
         cell.isIncluded.setImage(plusImage, for: .normal)
         cell.tagName.text = tags[indexPath.row].tag
         cell.tagCount.text = "0"
@@ -103,4 +105,15 @@ class EditCitationTagsController: UITableViewController {
     }
     */
 
+}
+
+extension EditCitationTagsController: EditTagCellDelegate {
+    func didTapButtonToggleTag(with tagName: String) {
+        guard tagName != "" else { return }
+        guard let tag = tags.first(where: {$0.tag == tagName}) else { return }
+        
+        // TODO: add tag to citation
+        
+        print(tag.tag!)
+    }
 }

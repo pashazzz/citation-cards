@@ -7,10 +7,20 @@
 
 import UIKit
 
+protocol EditTagCellDelegate {
+    func didTapButtonToggleTag(with tagName: String)
+}
+
 class EditTagCell: UITableViewCell {
+    var delegate: EditTagCellDelegate?
+    
     @IBOutlet var isIncluded: UIButton!
     @IBOutlet var tagName: UILabel!
     @IBOutlet var tagCount: UILabel!
+    
+    @IBAction func didTapButtonToggleTag() {
+        delegate?.didTapButtonToggleTag(with: tagName.text ?? "")
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
