@@ -169,110 +169,6 @@
             </objects>
             <point key="canvasLocation" x="-3576" y="875"/>
         </scene>
-        <!--Tag Controller-->
-        <scene sceneID="ob1-CN-6MG">
-            <objects>
-                <tableViewController id="CWW-z2-TnU" customClass="TagController" customModule="Citation_cards" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="hB1-iR-06O">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <sections>
-                            <tableViewSection id="B62-zb-hby">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="createTagCell" id="eyr-Iy-emr">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eyr-Iy-emr" id="AF2-HY-3MF">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mjl-J2-BTR">
-                                                    <rect key="frame" x="20" y="11" width="353" height="22"/>
-                                                    <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create a new tag" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u2I-id-DxL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="22"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYS-S9-C7k">
-                                                            <rect key="frame" x="330" y="0.0" width="23" height="22"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="plus" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="onTapCreateTag:" destination="CWW-z2-TnU" eventType="touchUpInside" id="fRh-bn-msb"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Mjl-J2-BTR" firstAttribute="top" secondItem="AF2-HY-3MF" secondAttribute="topMargin" id="2tB-vt-whG"/>
-                                                <constraint firstItem="Mjl-J2-BTR" firstAttribute="leading" secondItem="AF2-HY-3MF" secondAttribute="leadingMargin" id="Lne-uv-VVa"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Mjl-J2-BTR" secondAttribute="bottom" id="lLu-Au-1lr"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Mjl-J2-BTR" secondAttribute="trailing" id="sgP-j5-q1p"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tagListCell" rowHeight="44" id="5nr-19-2nK">
-                                        <rect key="frame" x="0.0" y="94" width="393" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5nr-19-2nK" id="U1W-2r-VVa">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d13-0o-ImB">
-                                                    <rect key="frame" x="20" y="11" width="353" height="22"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewLayout key="collectionViewLayout" id="yyj-2p-TW1" customClass="LeftAlignedCollectionViewFlowLayout" customModule="Citation_cards" customModuleProvider="target"/>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tagCell" id="JUu-6R-X0i">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1Lb-P7-rca">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                            </collectionViewCellContentView>
-                                                        </collectionViewCell>
-                                                    </cells>
-                                                </collectionView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="d13-0o-ImB" firstAttribute="leading" secondItem="U1W-2r-VVa" secondAttribute="leadingMargin" id="HyO-Ig-t9L"/>
-                                                <constraint firstItem="d13-0o-ImB" firstAttribute="top" secondItem="U1W-2r-VVa" secondAttribute="topMargin" id="JBV-Wn-gVQ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="d13-0o-ImB" secondAttribute="bottom" id="QJH-UA-3JP"/>
-                                                <constraint firstItem="d13-0o-ImB" firstAttribute="trailing" secondItem="U1W-2r-VVa" secondAttribute="trailingMargin" id="u3a-is-zUT"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="citationsWithTags" id="ayq-kC-NRh" userLabel="tagList">
-                                        <rect key="frame" x="0.0" y="138" width="393" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ayq-kC-NRh" id="c4B-fY-Ya7">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="CWW-z2-TnU" id="sLu-Xp-NHu"/>
-                            <outlet property="delegate" destination="CWW-z2-TnU" id="EuQ-Ox-TdK"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="ofv-8H-hL3"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="createTagField" destination="u2I-id-DxL" id="9Pu-qe-M1l"/>
-                        <outlet property="tagsCollectionView" destination="d13-0o-ImB" id="DUJ-wk-uES"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cjx-1q-fw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2619" y="875"/>
-        </scene>
         <!--Tag List Controller-->
         <scene sceneID="Udd-ON-xQZ">
             <objects>
@@ -335,7 +231,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZf-zc-wK3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1981" y="875"/>
+            <point key="canvasLocation" x="-2407" y="875"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="k0e-al-GTM">
@@ -693,7 +589,6 @@
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="tag.fill" catalog="system" width="128" height="118"/>
         <systemColor name="labelColor">

@@ -23,8 +23,7 @@ class TagListController: UITableViewController {
             let tagForSave = TagForSave(tag: tagName)
             self.storage.createTag(tagForSave)
             
-            self.notificationPopup.setConnectedController(self)
-            self.notificationPopup.displayNotification(withCaption: "Created")
+            self.displayPopup(withCaption: "Created")
             
             self.updTagsCollectionList()
         }
@@ -48,6 +47,11 @@ class TagListController: UITableViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    private func displayPopup(withCaption: String) {
+        notificationPopup.setConnectedController(self)
+        notificationPopup.displayNotification(withCaption: withCaption)
     }
 
     override func viewDidLoad() {
