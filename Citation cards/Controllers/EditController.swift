@@ -13,7 +13,7 @@ class EditController: UITableViewController {
     @IBOutlet var sourceTextField: UITextField!
     @IBOutlet var isFavouriteSwitch: UISwitch!
     
-    @IBOutlet var tagsCollectionView: UICollectionView!
+    @IBOutlet var tags: UILabel!
     
     var doAfterEdit: (() -> Void)?
     let storage = Storage()
@@ -48,10 +48,11 @@ class EditController: UITableViewController {
         authorTextField.text = editedCitation?.author ?? tempCitation.author
         sourceTextField.text = editedCitation?.source ?? tempCitation.source
         isFavouriteSwitch.isOn = editedCitation?.isFavourite ?? tempCitation.isFavourite
+        tags.text = "Tags: " + ("")
         citationTextView.becomeFirstResponder()
-//        citationTextView.isFavourite = tempCitation.isFavourite
+
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -65,6 +66,10 @@ class EditController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
+    }
+    
+    private func updTags() {
+        print("updTags")
     }
 
     /*
@@ -102,14 +107,22 @@ class EditController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         print(segue.identifier)
+         if segue.identifier == "EditCitationTagsController" {
+             print("EditCitationTagsController")
+             let destination = segue.destination as! EditCitationTagsController
+             destination.citation = editedCitation ?? tempCitation as? Citation
+             destination.doAfterEdit = {[unowned self] in
+                 print("segue")
+                 updTags()
+             }
+         }
+         
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+     }
 
 }

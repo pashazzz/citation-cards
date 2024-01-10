@@ -25,7 +25,7 @@ class TagListController: UITableViewController {
             
             self.displayPopup(withCaption: "Created")
             
-            self.updTagsCollectionList()
+            self.updTableView()
         }
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -42,13 +42,6 @@ class TagListController: UITableViewController {
         }
     }
     
-    private func updTagsCollectionList() {
-        tags = storage.getAllTags()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
     private func displayPopup(withCaption: String) {
         notificationPopup.setConnectedController(self)
         notificationPopup.displayNotification(withCaption: withCaption)
@@ -56,7 +49,7 @@ class TagListController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updTagsCollectionList()
+        updTableView()
         
         // gestures
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
@@ -111,7 +104,7 @@ class TagListController: UITableViewController {
                 tag.tag = newName
                 self.storage.editTag(tag)
                 
-                self.updTagsCollectionList()
+                self.updTableView()
             }
             
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -126,7 +119,7 @@ class TagListController: UITableViewController {
             let deleteButton = UIAlertAction(title: "Delete", style: .default) { _ in
                 self.storage.deleteTag(tag)
                 
-                self.updTagsCollectionList()
+                self.updTableView()
             }
             
             let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -137,7 +130,7 @@ class TagListController: UITableViewController {
         }
         
         let deleteCitationsWithTagAction = UIAlertAction(title: "Delete citations with tag", style: .destructive) {[unowned self] _ in
-            updTagsCollectionList()
+            updTableView()
         }
         
         sheet.addAction(cancelAction)

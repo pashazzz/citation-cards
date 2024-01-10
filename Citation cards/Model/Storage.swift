@@ -20,6 +20,7 @@ struct CitationForSave: CitationForSaveProtocol {
     var author: String = ""
     var source: String = ""
     var isFavourite: Bool = false
+    var tags: String = ""
 }
 
 protocol TagForSaveProtocol {
