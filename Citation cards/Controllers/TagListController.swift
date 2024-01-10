@@ -53,6 +53,10 @@ class TagListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updTagsCollectionList()
+        
+        // gestures
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        tableView.addGestureRecognizer(longPress)
 
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
@@ -77,6 +81,67 @@ class TagListController: UITableViewController {
         cell.tagCount?.text = String(0)
 
         return cell
+    }
+    
+    // handle long press
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                displayAlertOnTagLongPress(tag: tags[indexPath.row])
+            }
+        }
+    }
+    private func displayAlertOnTagLongPress(tag: Tag) {
+        let sheet = UIAlertController(title: tag.tag, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let renameTagAction = UIAlertAction(title: "Rename tag", style: .default) {[unowned self] _ in
+            let renameAlert = UIAlertController(title: tag.tag, message: "Rename tag", preferredStyle: .alert)
+            renameAlert.addTextField { textField in
+                textField.placeholder = "New tag name"
+            }
+            let renameButton = UIAlertAction(title: "Rename", style: .default) { _ in
+                guard let newName = renameAlert.textFields?[0].text else { return }
+                guard newName != tag.tag else { return }
+                tag.tag = newName
+                self.storage.editTag(tag)
+                
+                self.updTagsCollectionList()
+            }
+            
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            renameAlert.addAction(cancelButton)
+            renameAlert.addAction(renameButton)
+            
+            self.present(renameAlert, animated: true, completion: nil)
+        }
+        
+        let deleteTagAction = UIAlertAction(title: "Delete tag", style: .destructive) {[unowned self] _ in
+            let deleteAlert = UIAlertController(title: tag.tag, message: "Delete tag", preferredStyle: .alert)
+            let deleteButton = UIAlertAction(title: "Delete", style: .default) { _ in
+                self.storage.deleteTag(tag)
+                
+                self.updTagsCollectionList()
+            }
+            
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            deleteAlert.addAction(cancelButton)
+            deleteAlert.addAction(deleteButton)
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
+        
+        let deleteCitationsWithTagAction = UIAlertAction(title: "Delete citations with tag", style: .destructive) {[unowned self] _ in
+            updTagsCollectionList()
+        }
+        
+        sheet.addAction(cancelAction)
+        sheet.addAction(renameTagAction)
+        sheet.addAction(deleteTagAction)
+        sheet.addAction(deleteCitationsWithTagAction)
+        
+        present(sheet, animated: true)
     }
     
 
