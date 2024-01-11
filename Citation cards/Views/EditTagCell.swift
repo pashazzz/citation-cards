@@ -19,7 +19,8 @@ class EditTagCell: UITableViewCell {
     @IBOutlet var tagCount: UILabel!
     
     @IBAction func didTapButtonToggleTag() {
-        let isTagIncluded: Bool = isIncluded.currentImage == UIImage(systemName: "minus.circle.fill")
+        let includedImage = UIImage(systemName: "minus.circle.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+        let isTagIncluded: Bool = isIncluded.currentImage == includedImage
         delegate?.didTapButtonToggleTag(with: tagName.text ?? "", isIncluded: isTagIncluded)
     }
 

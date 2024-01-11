@@ -10,15 +10,20 @@ import UIKit
 class EditCitationTagsController: UITableViewController {
     
     let storage = Storage()
-    var tags: [Tag] = []
-    var tagsIncluded: [Tag] = []
+    var tagsBySections: [[Tag]] = []
     
     var doAfterEdit: (() -> Void)?
     var citation: Citation?
     
+    let sections = ["Included", "Available"]
+    let plusImage = UIImage(systemName: "plus.circle.fill")?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+    let minusImage = UIImage(systemName: "minus.circle.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+    
     private func updTableView() {
-        tags = storage.getAllTags()
-        tagsIncluded = citation?.citationToTag?.allObjects as! [Tag]
+        tagsBySections = []
+        let tags: [Tag] = storage.getAllTags()
+        tagsBySections.append(citation?.citationToTag?.allObjects as! [Tag])
+        tagsBySections.append(tags.filter({!tagsBySections[0].contains($0)}))
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -40,23 +45,24 @@ class EditCitationTagsController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sections.count
+    }
+    
+    // titleForHeaderInSection
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return tags.count
+        return tagsBySections[section].count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editTagCell", for: indexPath) as! EditTagCell
-        let plusImage = UIImage(systemName: "plus.circle.fill")
-        let minusImage = UIImage(systemName: "minus.circle.fill")
-        let isTagIncluded = tagsIncluded.firstIndex(where: {$0.tag == tags[indexPath.row].tag})
         
         cell.delegate = self
-        cell.isIncluded.setImage((isTagIncluded != nil) ? minusImage : plusImage, for: .normal)
-        cell.tagName.text = tags[indexPath.row].tag
+        cell.isIncluded.setImage((indexPath.section == 0) ? minusImage : plusImage, for: .normal)
+        cell.tagName.text = tagsBySections[indexPath.section][indexPath.row].tag
         cell.tagCount.text = "0"
 
         return cell
@@ -113,6 +119,7 @@ class EditCitationTagsController: UITableViewController {
 extension EditCitationTagsController: EditTagCellDelegate {
     func didTapButtonToggleTag(with tagName: String, isIncluded: Bool) {
         guard tagName != "" else { return }
+        let tags: [Tag] = storage.getAllTags()
         guard let index = tags.firstIndex(where: {$0.tag == tagName}) else { return }
         
         isIncluded
