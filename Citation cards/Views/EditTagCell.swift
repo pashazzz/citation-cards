@@ -8,7 +8,7 @@
 import UIKit
 
 protocol EditTagCellDelegate {
-    func didTapButtonToggleTag(with tagName: String)
+    func didTapButtonToggleTag(with tagName: String, isIncluded: Bool)
 }
 
 class EditTagCell: UITableViewCell {
@@ -19,7 +19,8 @@ class EditTagCell: UITableViewCell {
     @IBOutlet var tagCount: UILabel!
     
     @IBAction func didTapButtonToggleTag() {
-        delegate?.didTapButtonToggleTag(with: tagName.text ?? "")
+        let isTagIncluded: Bool = isIncluded.currentImage == UIImage(systemName: "minus.circle.fill")
+        delegate?.didTapButtonToggleTag(with: tagName.text ?? "", isIncluded: isTagIncluded)
     }
 
     override func awakeFromNib() {

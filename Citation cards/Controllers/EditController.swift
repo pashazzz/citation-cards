@@ -68,8 +68,14 @@ class EditController: UITableViewController {
         return 5
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        updTags()
+    }
+    
     private func updTags() {
-        print("updTags")
+        let citation = editedCitation ?? tempCitation as? Citation
+        let tagsIncluded = citation?.citationToTag?.allObjects as! [Tag]
+        tags.text = "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
     }
 
     /*
@@ -110,15 +116,9 @@ class EditController: UITableViewController {
     // MARK: - Navigation
 
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         print(segue.identifier)
          if segue.identifier == "EditCitationTagsController" {
-             print("EditCitationTagsController")
              let destination = segue.destination as! EditCitationTagsController
              destination.citation = editedCitation ?? tempCitation as? Citation
-             destination.doAfterEdit = {[unowned self] in
-                 print("segue")
-                 updTags()
-             }
          }
          
          // Get the new view controller using segue.destination.

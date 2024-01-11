@@ -11,12 +11,15 @@ class EditCitationTagsController: UITableViewController {
     
     let storage = Storage()
     var tags: [Tag] = []
+    var tagsIncluded: [Tag] = []
     
     var doAfterEdit: (() -> Void)?
     var citation: Citation?
     
     private func updTableView() {
         tags = storage.getAllTags()
+        tagsIncluded = citation?.citationToTag?.allObjects as! [Tag]
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -25,7 +28,6 @@ class EditCitationTagsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updTableView()
-        print(citation)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -49,10 +51,11 @@ class EditCitationTagsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editTagCell", for: indexPath) as! EditTagCell
         let plusImage = UIImage(systemName: "plus.circle.fill")
-//        let minusImage = UIImage(systemName: "minus.circle.fill")
+        let minusImage = UIImage(systemName: "minus.circle.fill")
+        let isTagIncluded = tagsIncluded.firstIndex(where: {$0.tag == tags[indexPath.row].tag})
         
         cell.delegate = self
-        cell.isIncluded.setImage(plusImage, for: .normal)
+        cell.isIncluded.setImage((isTagIncluded != nil) ? minusImage : plusImage, for: .normal)
         cell.tagName.text = tags[indexPath.row].tag
         cell.tagCount.text = "0"
 
@@ -108,12 +111,14 @@ class EditCitationTagsController: UITableViewController {
 }
 
 extension EditCitationTagsController: EditTagCellDelegate {
-    func didTapButtonToggleTag(with tagName: String) {
+    func didTapButtonToggleTag(with tagName: String, isIncluded: Bool) {
         guard tagName != "" else { return }
-        guard let tag = tags.first(where: {$0.tag == tagName}) else { return }
+        guard let index = tags.firstIndex(where: {$0.tag == tagName}) else { return }
         
-        // TODO: add tag to citation
+        isIncluded
+            ? citation?.removeFromCitationToTag(tags[index])
+            : citation?.addToCitationToTag(tags[index])
         
-        print(tag.tag!)
+        updTableView()
     }
 }
