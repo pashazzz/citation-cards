@@ -113,7 +113,7 @@
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8I-T2-8SC">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Tags:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8I-T2-8SC">
                                                                     <rect key="frame" x="0.0" y="31.333333333333332" width="315" height="14.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,9 +137,9 @@
                                 <connections>
                                     <outlet property="author" destination="Bx4-dT-UmX" id="KEz-Wl-mbp"/>
                                     <outlet property="caption" destination="N5A-EY-uRJ" id="ulb-qj-4gi"/>
-                                    <outlet property="date" destination="W8I-T2-8SC" id="DSf-ZU-McH"/>
                                     <outlet property="isFavourite" destination="A6a-mH-adI" id="JWn-cx-S5Y"/>
                                     <outlet property="source" destination="DSb-0Q-ynh" id="Cb9-wZ-AIC"/>
+                                    <outlet property="tags" destination="W8I-T2-8SC" id="DSf-ZU-McH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -244,14 +244,14 @@
                             <tableViewSection id="9dK-vs-zt8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="huL-qR-4mx">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="huL-qR-4mx" id="aJo-3T-Sr4">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Archived citations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCd-qt-Eur">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="353" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -269,7 +269,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Wh1-Wb-Cq6">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="93.333332061767578" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wh1-Wb-Cq6" id="su4-ZB-fJP">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
@@ -277,7 +277,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Iqw-6F-ehe">
-                                        <rect key="frame" x="0.0" y="136.33333587646484" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="137" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iqw-6F-ehe" id="2At-I4-N20">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
@@ -364,8 +364,8 @@
                                 <connections>
                                     <outlet property="author" destination="Bgi-0f-i6E" id="a8w-Wd-d7X"/>
                                     <outlet property="caption" destination="rKZ-yf-ha1" id="tJS-Ws-N8i"/>
-                                    <outlet property="date" destination="KLE-2V-rCy" id="QMB-rf-xJI"/>
                                     <outlet property="source" destination="BBo-jI-L5c" id="Z5U-Oq-pQO"/>
+                                    <outlet property="tags" destination="KLE-2V-rCy" id="QMB-rf-xJI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

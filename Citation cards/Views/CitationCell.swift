@@ -11,7 +11,7 @@ class CitationCell: UITableViewCell {
     @IBOutlet var caption: UILabel!
     @IBOutlet var author: UILabel!
     @IBOutlet var source: UILabel!
-    @IBOutlet var date: UILabel!
+    @IBOutlet var tags: UILabel!
     @IBOutlet var isFavourite: UIButton!
     
     var toggleIsFavourite: (() -> Void)!

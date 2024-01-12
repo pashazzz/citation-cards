@@ -71,7 +71,7 @@ class ArchivedController: UITableViewController {
         cell.source?.text = citation.source
         
         let dateCaption = "Archived at: \(DateTimeHelper.getDateTimeString(from: citation.archivedAt!))"
-        cell.date?.text = dateCaption
+        cell.tags?.text = dateCaption
 
         return cell
     }

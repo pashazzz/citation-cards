@@ -110,11 +110,8 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         cell.author?.text = citation.author
         cell.source?.text = citation.source
         
-        // createdAt or updatedAt
-        let isModified = citation.updatedAt! > citation.createdAt!
-        let dateTime = isModified ? citation.updatedAt! : citation.createdAt!
-        let dateCaption = "\(isModified ? "Updated at:" : "Created at:") \(DateTimeHelper.getDateTimeString(from: dateTime))"
-        cell.date?.text = dateCaption
+        let tagsIncluded = citation.citationToTag?.allObjects as! [Tag]
+        cell.tags?.text = "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
         
         // is favourite
         cell.isFavourite.setTitle("", for: .normal)
