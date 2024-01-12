@@ -12,7 +12,6 @@ class EditCitationTagsController: UITableViewController {
     let storage = Storage()
     var tagsBySections: [[Tag]] = []
     
-    var doAfterEdit: (() -> Void)?
     var citation: Citation?
     
     let sections = ["Included", "Available"]
@@ -22,7 +21,7 @@ class EditCitationTagsController: UITableViewController {
     private func updTableView() {
         tagsBySections = []
         let tags: [Tag] = storage.getAllTags()
-        tagsBySections.append(citation?.citationToTag?.allObjects as! [Tag])
+        tagsBySections.append(citation?.citationToTag?.allObjects as? [Tag] ?? [])
         tagsBySections.append(tags.filter({!tagsBySections[0].contains($0)}))
         
         DispatchQueue.main.async {
@@ -60,10 +59,11 @@ class EditCitationTagsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editTagCell", for: indexPath) as! EditTagCell
         
+        let tag = tagsBySections[indexPath.section][indexPath.row]
         cell.delegate = self
         cell.isIncluded.setImage((indexPath.section == 0) ? minusImage : plusImage, for: .normal)
-        cell.tagName.text = tagsBySections[indexPath.section][indexPath.row].tag
-        cell.tagCount.text = "0"
+        cell.tagName.text = tag.tag
+        cell.tagCount.text = String(TagsHelper.getOnlyActualCitationsFrom(tag).count)
 
         return cell
     }

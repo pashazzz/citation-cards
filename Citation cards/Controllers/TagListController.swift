@@ -61,6 +61,10 @@ class TagListController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updTableView()
+    }
 
     // MARK: - Table view data source
 
@@ -74,8 +78,9 @@ class TagListController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell", for: indexPath) as! TagCell
-        cell.tagName?.text = tags[indexPath.row].tag
-        cell.tagCount?.text = String(0)
+        let tag = tags[indexPath.row]
+        cell.tagName?.text = tag.tag
+        cell.tagCount?.text = String(TagsHelper.getOnlyActualCitationsFrom(tag).count)
 
         return cell
     }
