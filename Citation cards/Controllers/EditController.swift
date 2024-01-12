@@ -18,24 +18,22 @@ class EditController: UITableViewController {
     var doAfterEdit: (() -> Void)?
     let storage = Storage()
     
-    var tempCitation: CitationForSaveProtocol = CitationForSave(text: "")
+    var tempCitation: Citation?
     var editedCitation: Citation?
     
     @IBAction func onTapSaveButton(_ sender: UIBarButtonItem) {
         // edited or new one
-        if let citation = editedCitation {
-            citation.text = citationTextView.text
-            citation.author = authorTextField.text
-            citation.source = sourceTextField.text
-            citation.isFavourite = isFavouriteSwitch.isOn
-            storage.editCitation(citation)
-        } else {
-            let item = CitationForSave(text: citationTextView.text!,
-                                       author: authorTextField.text ?? "",
-                                       source: sourceTextField.text ?? "",
-                                       isFavourite: isFavouriteSwitch.isOn)
-            storage.saveCitation(item)
-        }
+        let needToEdit = editedCitation != nil
+        
+        let citation = needToEdit ? editedCitation! : tempCitation!
+        citation.text = citationTextView.text
+        citation.author = authorTextField.text
+        citation.source = sourceTextField.text
+        citation.isFavourite = isFavouriteSwitch.isOn
+        
+        needToEdit
+            ? storage.editCitation(citation)
+            : storage.saveCitation(citation)
         
         doAfterEdit?()
         navigationController?.popViewController(animated: true)
@@ -43,11 +41,14 @@ class EditController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if editedCitation == nil && tempCitation == nil {
+            tempCitation = storage.prepareCitation()
+        }
 
-        citationTextView.text = editedCitation?.text ?? tempCitation.text
-        authorTextField.text = editedCitation?.author ?? tempCitation.author
-        sourceTextField.text = editedCitation?.source ?? tempCitation.source
-        isFavouriteSwitch.isOn = editedCitation?.isFavourite ?? tempCitation.isFavourite
+        citationTextView.text = editedCitation?.text ?? tempCitation?.text
+        authorTextField.text = editedCitation?.author ?? tempCitation?.author
+        sourceTextField.text = editedCitation?.source ?? tempCitation?.source
+        isFavouriteSwitch.isOn = ((editedCitation?.isFavourite ?? tempCitation?.isFavourite) != false)
         tags.text = "Tags: " + ("")
         citationTextView.becomeFirstResponder()
 
@@ -73,8 +74,8 @@ class EditController: UITableViewController {
     }
     
     private func updTags() {
-        let citation = editedCitation ?? tempCitation as? Citation
-        let tagsIncluded = citation?.citationToTag?.allObjects as! [Tag]
+        let citation = editedCitation ?? tempCitation
+        let tagsIncluded = citation?.citationToTag?.allObjects as? [Tag] ?? []
         tags.text = "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
     }
 
@@ -118,7 +119,7 @@ class EditController: UITableViewController {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if segue.identifier == "EditCitationTagsController" {
              let destination = segue.destination as! EditCitationTagsController
-             destination.citation = editedCitation ?? tempCitation as? Citation
+             destination.citation = editedCitation ?? tempCitation!
          }
          
          // Get the new view controller using segue.destination.

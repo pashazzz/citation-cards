@@ -8,21 +8,6 @@
 import UIKit
 import CoreData
 
-protocol CitationForSaveProtocol {
-    var text: String {get set}
-    var author: String {get set}
-    var source: String {get set}
-    var isFavourite: Bool {get set}
-}
-
-struct CitationForSave: CitationForSaveProtocol {
-    var text: String = ""
-    var author: String = ""
-    var source: String = ""
-    var isFavourite: Bool = false
-    var tags: String = ""
-}
-
 protocol TagForSaveProtocol {
     var tag: String {get set}
 }
@@ -35,7 +20,8 @@ protocol StorageProtocol {
     func getAllCitations(inOrder: SortOrder) -> [Citation]
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
     func getArchivedCitations() -> [Citation]
-    func saveCitation(_ item: CitationForSaveProtocol) -> Void
+    func prepareCitation() -> Citation
+    func saveCitation(_ item: Citation) -> Void
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
     func archiveCitation(_ item: Citation) -> Void
     func restoreCitation(_ item: Citation) -> Void
@@ -106,13 +92,14 @@ class Storage: StorageProtocol {
         return items
     }
     
-    func saveCitation(_ item: CitationForSaveProtocol) {
+    func prepareCitation() -> Citation {
+        let preparedCitation = NSEntityDescription.insertNewObject(forEntityName: "Citation", into: self.context) as! Citation
+        
+        return preparedCitation
+    }
+    
+    func saveCitation(_ citation: Citation) {
         let date = Date()
-        let citation = Citation(context: context)
-        citation.text = item.text
-        citation.author = item.author
-        citation.source = item.source
-        citation.isFavourite = item.isFavourite
         citation.createdAt = date
         citation.updatedAt = date
         do {

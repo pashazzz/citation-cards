@@ -44,6 +44,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     private func updTableView() {
+        storage.context.reset()
         sortOrder = settings.getSortOrder()
         onlyFavourites = settings.getOnlyFavourites()
         onlyFavouritesButton.title = "\(onlyFavourites ? "\u{25C9}" : "\u{25CB}") Only favourites"
