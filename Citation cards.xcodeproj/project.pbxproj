@@ -12,6 +12,7 @@
 		3E29ACB02B4EB63E00AD1297 /* EditCitationTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACAF2B4EB63E00AD1297 /* EditCitationTagsController.swift */; };
 		3E29ACB22B4EF31300AD1297 /* EditTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB12B4EF31300AD1297 /* EditTagCell.swift */; };
 		3E29ACB62B51348600AD1297 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB52B51348600AD1297 /* TagsHelper.swift */; };
+		3E29ACB82B5569B500AD1297 /* TaggedCitationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB72B5569B500AD1297 /* TaggedCitationsController.swift */; };
 		3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */; };
 		3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DBC42AF54B5400312081 /* HomeController.swift */; };
 		3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E94B67A2AF95C3E00261BD7 /* Settings.swift */; };
@@ -59,6 +60,7 @@
 		3E29ACAF2B4EB63E00AD1297 /* EditCitationTagsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCitationTagsController.swift; sourceTree = "<group>"; };
 		3E29ACB12B4EF31300AD1297 /* EditTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagCell.swift; sourceTree = "<group>"; };
 		3E29ACB52B51348600AD1297 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
+		3E29ACB72B5569B500AD1297 /* TaggedCitationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedCitationsController.swift; sourceTree = "<group>"; };
 		3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		3E35DBC42AF54B5400312081 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3E94B67A2AF95C3E00261BD7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				3ECBCEFC2AF401E800D509DB /* EditController.swift */,
 				3E29ACAF2B4EB63E00AD1297 /* EditCitationTagsController.swift */,
 				3EE85BD22B4DA4E7005DC109 /* TagListController.swift */,
+				3E29ACB72B5569B500AD1297 /* TaggedCitationsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				3E15C0EC2AFA30A5008499E3 /* DateTimeHelper.swift in Sources */,
 				3ECBCE342AF13CE000D509DB /* SceneDelegate.swift in Sources */,
 				3ECBCE5D2AF2AA6D00D509DB /* CitationCell.swift in Sources */,
+				3E29ACB82B5569B500AD1297 /* TaggedCitationsController.swift in Sources */,
 				3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */,
 				3ECBCE542AF2A70400D509DB /* Tag+CoreDataProperties.swift in Sources */,
 				3ECBCE532AF2A70400D509DB /* Tag+CoreDataClass.swift in Sources */,
