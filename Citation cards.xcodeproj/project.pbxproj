@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E15C0EC2AFA30A5008499E3 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15C0EB2AFA30A5008499E3 /* DateTimeHelper.swift */; };
-		3E15C0EE2AFBA81D008499E3 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */; };
+		3E15C0EE2AFBA81D008499E3 /* MoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E15C0ED2AFBA81D008499E3 /* MoreController.swift */; };
 		3E29ACB02B4EB63E00AD1297 /* EditCitationTagsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACAF2B4EB63E00AD1297 /* EditCitationTagsController.swift */; };
 		3E29ACB22B4EF31300AD1297 /* EditTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB12B4EF31300AD1297 /* EditTagCell.swift */; };
 		3E29ACB62B51348600AD1297 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB52B51348600AD1297 /* TagsHelper.swift */; };
@@ -56,7 +56,7 @@
 
 /* Begin PBXFileReference section */
 		3E15C0EB2AFA30A5008499E3 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
-		3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		3E15C0ED2AFBA81D008499E3 /* MoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
 		3E29ACAF2B4EB63E00AD1297 /* EditCitationTagsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCitationTagsController.swift; sourceTree = "<group>"; };
 		3E29ACB12B4EF31300AD1297 /* EditTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagCell.swift; sourceTree = "<group>"; };
 		3E29ACB52B51348600AD1297 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
@@ -167,12 +167,12 @@
 			isa = PBXGroup;
 			children = (
 				3E35DBC42AF54B5400312081 /* HomeController.swift */,
-				3ECBCE4A2AF2A10600D509DB /* ArchivedController.swift */,
-				3E15C0ED2AFBA81D008499E3 /* SettingsController.swift */,
 				3ECBCEFC2AF401E800D509DB /* EditController.swift */,
 				3E29ACAF2B4EB63E00AD1297 /* EditCitationTagsController.swift */,
 				3EE85BD22B4DA4E7005DC109 /* TagListController.swift */,
 				3E29ACB72B5569B500AD1297 /* TaggedCitationsController.swift */,
+				3E15C0ED2AFBA81D008499E3 /* MoreController.swift */,
+				3ECBCE4A2AF2A10600D509DB /* ArchivedController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -358,7 +358,7 @@
 				3E29ACB62B51348600AD1297 /* TagsHelper.swift in Sources */,
 				3ECBCE612AF2B66C00D509DB /* Storage.swift in Sources */,
 				3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */,
-				3E15C0EE2AFBA81D008499E3 /* SettingsController.swift in Sources */,
+				3E15C0EE2AFBA81D008499E3 /* MoreController.swift in Sources */,
 				3E29ACB02B4EB63E00AD1297 /* EditCitationTagsController.swift in Sources */,
 				3E29ACB22B4EF31300AD1297 /* EditTagCell.swift in Sources */,
 				3ECBCE3C2AF13CE000D509DB /* Citation_cards.xcdatamodeld in Sources */,
