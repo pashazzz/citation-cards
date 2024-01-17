@@ -270,20 +270,32 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Wh1-Wb-Cq6">
-                                        <rect key="frame" x="0.0" y="93.666667938232422" width="393" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="93.666667938232422" width="393" height="56.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wh1-Wb-Cq6" id="su4-ZB-fJP">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="56.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export citations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Im-5D-PWd">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11" width="353" height="34.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpa-re-D37">
+                                                    <rect key="frame" x="20" y="11" width="353" height="34.666666666666664"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                                    <connections>
+                                                        <action selector="exportButton:" destination="08i-Tq-Lsa" eventType="touchUpInside" id="p6G-b6-rhW"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lpa-re-D37" secondAttribute="trailing" id="BIX-qk-Wsf"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lpa-re-D37" secondAttribute="bottom" id="LCo-6R-AK8"/>
+                                                <constraint firstItem="lpa-re-D37" firstAttribute="leading" secondItem="su4-ZB-fJP" secondAttribute="leadingMargin" id="Rb3-Qu-DFM"/>
+                                                <constraint firstItem="lpa-re-D37" firstAttribute="top" secondItem="su4-ZB-fJP" secondAttribute="topMargin" id="V31-Lp-AhW"/>
                                                 <constraint firstItem="0Im-5D-PWd" firstAttribute="leading" secondItem="su4-ZB-fJP" secondAttribute="leadingMargin" id="VQN-OP-UsG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0Im-5D-PWd" secondAttribute="trailing" id="gnn-JI-Q8b"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="0Im-5D-PWd" secondAttribute="bottom" id="l5H-Kv-XKp"/>
@@ -292,7 +304,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Iqw-6F-ehe">
-                                        <rect key="frame" x="0.0" y="136.33333587646484" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="150.33333587646484" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iqw-6F-ehe" id="2At-I4-N20">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>

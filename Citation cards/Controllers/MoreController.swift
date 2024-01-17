@@ -7,7 +7,14 @@
 
 import UIKit
 
+enum ExportTypes {
+    case TXT
+    case CSV
+}
+
 class MoreController: UITableViewController {
+    let storage = Storage()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +35,31 @@ class MoreController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
+    }
+    
+    @IBAction func exportButton(_ sender: Any?) {
+        let data = prepareDataForExport(type: .TXT)
+        saveAndExport(data: data)
+    }
+    
+    func prepareDataForExport(type: ExportTypes = .TXT) -> String {
+        var exportString = ""
+        let citationsArray = storage.getAllCitations(inOrder: .oldestFirst)
+        for citation in citationsArray {
+            exportString += "«\(citation.text!)»\n"
+            if citation.author != nil && citation.author != "" {
+                exportString += "\(citation.author!)\n"
+            }
+            if citation.source != nil && citation.source != "" {
+                exportString += "\(citation.source!)\n"
+            }
+            exportString += "---\n"
+        }
+        return exportString
+    }
+    func saveAndExport(data: String) {
+        print(data)
     }
 
     /*
