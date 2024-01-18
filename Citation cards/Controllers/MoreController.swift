@@ -16,6 +16,13 @@ class MoreController: UITableViewController {
     let storage = Storage()
     let notificationPopup = PopupNotification()
     
+    private func dateToString(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    
     private func displayPopup(withCaption: String) {
         notificationPopup.setConnectedController(self)
         notificationPopup.displayNotification(withCaption: withCaption)
@@ -44,15 +51,30 @@ class MoreController: UITableViewController {
         return 2
     }
     
+    let exportFields = ["text", "author", "source", "createdAt", "isFavourite"]
+    
     @IBAction func exportButton(_ sender: Any?) {
-        let data = prepareDataForExport(type: .TXT)
-        saveAndExport(exportString: data)
+        let sheet = UIAlertController(title: "Export", message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let exportTxtAction = UIAlertAction(title: "Export into .txt", style: .default) {[unowned self] _ in
+            let data = prepareDataForExport(type: .TXT)
+            saveAndExport(exportString: data)
+        }
+        let exportCsvAction = UIAlertAction(title: "Export into .csv (separator is '|')", style: .default) {[unowned self] _ in
+            let data = prepareDataForExport(type: .CSV)
+            saveAndExport(exportString: data)
+        }
+        
+        sheet.addAction(cancelAction)
+        sheet.addAction(exportTxtAction)
+        sheet.addAction(exportCsvAction)
+        
+        present(sheet, animated: true)
     }
     
-    func prepareDataForExport(type: ExportTypes = .TXT) -> String {
+    private func generateTxtString(from citations: [Citation]) -> String {
         var exportString = ""
-        let citationsArray = storage.getAllCitations(inOrder: .oldestFirst)
-        for citation in citationsArray {
+        for citation in citations {
             exportString += "«\(citation.text!)»\n"
             if citation.author != nil && citation.author != "" {
                 exportString += "\(citation.author!)\n"
@@ -64,10 +86,47 @@ class MoreController: UITableViewController {
         }
         return exportString
     }
+    private func generateCsvString(from citations: [Citation]) -> String {
+        var exportString = exportFields.joined(separator: "|")
+        exportString += "\n"
+
+        for citation in citations {
+            for (index, field) in exportFields.enumerated() {
+                var value = ""
+                let valueRaw = citation.value(forKey: field)
+                
+                switch field {
+                case "createdAt":
+                    value = dateToString(from: valueRaw as! Date)
+                case "isFavourite":
+                    value = valueRaw as! Bool ? "true" : "false"
+                default:
+                    value = valueRaw as? String ?? ""
+                }
+                print(value)
+
+                exportString += value
+                exportString += index == exportFields.count - 1 ? "\n" : "|"
+            }
+        }
+        return exportString
+    }
+    
+    func prepareDataForExport(type: ExportTypes = .TXT) -> String {
+        var exportString = ""
+        let citationsArray = storage.getAllCitations(inOrder: .oldestFirst)
+
+        switch type {
+        case .TXT:
+            exportString = generateTxtString(from: citationsArray)
+        case .CSV:
+            exportString = generateCsvString(from: citationsArray)
+        }
+        return exportString
+    }
+
     func saveAndExport(exportString: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let todayString = dateFormatter.string(from: Date())
+        let todayString = dateToString(from: Date())
         let exportFilePath = NSTemporaryDirectory() + "citations_\(todayString).txt"
         let exportFileURL = NSURL(fileURLWithPath: exportFilePath)
         FileManager.default.createFile(atPath: exportFilePath, contents: NSData() as Data, attributes: nil)
