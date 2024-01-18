@@ -14,6 +14,12 @@ enum ExportTypes {
 
 class MoreController: UITableViewController {
     let storage = Storage()
+    let notificationPopup = PopupNotification()
+    
+    private func displayPopup(withCaption: String) {
+        notificationPopup.setConnectedController(self)
+        notificationPopup.displayNotification(withCaption: withCaption)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +46,7 @@ class MoreController: UITableViewController {
     
     @IBAction func exportButton(_ sender: Any?) {
         let data = prepareDataForExport(type: .TXT)
-        saveAndExport(data: data)
+        saveAndExport(exportString: data)
     }
     
     func prepareDataForExport(type: ExportTypes = .TXT) -> String {
@@ -58,8 +64,43 @@ class MoreController: UITableViewController {
         }
         return exportString
     }
-    func saveAndExport(data: String) {
-        print(data)
+    func saveAndExport(exportString: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayString = dateFormatter.string(from: Date())
+        let exportFilePath = NSTemporaryDirectory() + "citations_\(todayString).txt"
+        let exportFileURL = NSURL(fileURLWithPath: exportFilePath)
+        FileManager.default.createFile(atPath: exportFilePath, contents: NSData() as Data, attributes: nil)
+
+        var fileHandle: FileHandle? = nil
+        do {
+            fileHandle = try FileHandle(forWritingTo: exportFileURL as URL)
+        } catch {
+            print("Error with fileHandle")
+            displayPopup(withCaption: "Error with fileHandle")
+        }
+
+        if fileHandle != nil {
+            fileHandle!.seekToEndOfFile()
+            let data = exportString.data(using: String.Encoding.utf8, allowLossyConversion: false)
+            fileHandle!.write(data!)
+
+            fileHandle!.closeFile()
+
+            let firstActivityItem = NSURL(fileURLWithPath: exportFilePath)
+            let activityViewController : UIActivityViewController = UIActivityViewController(
+                activityItems: [firstActivityItem], applicationActivities: nil)
+
+            activityViewController.excludedActivityTypes = [
+                UIActivity.ActivityType.assignToContact,
+                UIActivity.ActivityType.saveToCameraRoll,
+                UIActivity.ActivityType.postToFlickr,
+                UIActivity.ActivityType.postToVimeo,
+                UIActivity.ActivityType.postToTencentWeibo
+            ]
+
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
 
     /*
