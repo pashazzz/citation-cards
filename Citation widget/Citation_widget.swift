@@ -39,8 +39,20 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        let storage = Storage()
+        
         let date = Date()
-        let entry = createCitationTemplate()
+        var entry: CitationEntry = createCitationTemplate()
+        let citation = storage.getRandomCitation()
+        if citation != nil {
+            entry = CitationEntry(
+                date: date,
+                citation: CitationForDisplay(
+                    text: citation?.text ?? "",
+                    author: citation?.author ?? "",
+                    source: citation?.source ?? ""))
+        }
+        
         let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 12, to: date)!
         
         let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
@@ -55,8 +67,11 @@ struct Citation_widgetEntryView : View {
     var body: some View {
         VStack {
             Text(entry.citation.text)
+                .font(.system(size: 15))
             Text(entry.citation.author)
+                .font(.system(size: 14))
             Text(entry.citation.source)
+                .font(.system(size: 14))
         }
     }
 }
@@ -85,5 +100,5 @@ struct Citation_widget: Widget {
     Citation_widget()
 } timeline: {
     CitationEntry(date: .now, citation: CitationForDisplay(text: "text", author: "author", source: "source"))
-    CitationEntry(date: .now, citation: CitationForDisplay(text: "text", author: "author", source: "source"))
+    CitationEntry(date: .now, citation: CitationForDisplay(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", author: "author", source: "source"))
 }

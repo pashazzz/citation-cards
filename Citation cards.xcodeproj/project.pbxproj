@@ -19,6 +19,15 @@
 		3E29ACC72B5A7ED000AD1297 /* Citation_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACC62B5A7ED000AD1297 /* Citation_widget.swift */; };
 		3E29ACC92B5A7ED200AD1297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E29ACC82B5A7ED200AD1297 /* Assets.xcassets */; };
 		3E29ACCD2B5A7ED200AD1297 /* Citation widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3E29ACBD2B5A7ED000AD1297 /* Citation widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3E29ACD42B5ACA1C00AD1297 /* Citation_cards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE3A2AF13CE000D509DB /* Citation_cards.xcdatamodeld */; };
+		3E29ACDA2B5AD04400AD1297 /* Citation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE512AF2A70400D509DB /* Citation+CoreDataClass.swift */; };
+		3E29ACDB2B5AD04700AD1297 /* Citation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE522AF2A70400D509DB /* Citation+CoreDataProperties.swift */; };
+		3E29ACDC2B5AD04F00AD1297 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE4F2AF2A70400D509DB /* Tag+CoreDataClass.swift */; };
+		3E29ACDD2B5AD05200AD1297 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE502AF2A70400D509DB /* Tag+CoreDataProperties.swift */; };
+		3E29ACDE2B5AD07000AD1297 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E94B67A2AF95C3E00261BD7 /* Settings.swift */; };
+		3E29ACE02B5AD61700AD1297 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE602AF2B66C00D509DB /* Storage.swift */; };
+		3E29ACE22B5AD65F00AD1297 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACE12B5AD65F00AD1297 /* Persistent.swift */; };
+		3E29ACE32B5AD65F00AD1297 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACE12B5AD65F00AD1297 /* Persistent.swift */; };
 		3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */; };
 		3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DBC42AF54B5400312081 /* HomeController.swift */; };
 		3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E94B67A2AF95C3E00261BD7 /* Settings.swift */; };
@@ -95,6 +104,9 @@
 		3E29ACC62B5A7ED000AD1297 /* Citation_widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_widget.swift; sourceTree = "<group>"; };
 		3E29ACC82B5A7ED200AD1297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E29ACCA2B5A7ED200AD1297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E29ACD22B5AC07800AD1297 /* Citation cards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Citation cards.entitlements"; sourceTree = "<group>"; };
+		3E29ACD32B5AC73600AD1297 /* Citation widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Citation widgetExtension.entitlements"; sourceTree = "<group>"; };
+		3E29ACE12B5AD65F00AD1297 /* Persistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
 		3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		3E35DBC42AF54B5400312081 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3E94B67A2AF95C3E00261BD7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -190,6 +202,7 @@
 		3ECBCE252AF13CE000D509DB = {
 			isa = PBXGroup;
 			children = (
+				3E29ACD32B5AC73600AD1297 /* Citation widgetExtension.entitlements */,
 				3ECBCE482AF13ED200D509DB /* README.md */,
 				3ECBCE302AF13CE000D509DB /* Citation cards */,
 				3ECBCED12AF3B43700D509DB /* Citation cardsTests */,
@@ -214,6 +227,7 @@
 		3ECBCE302AF13CE000D509DB /* Citation cards */ = {
 			isa = PBXGroup;
 			children = (
+				3E29ACD22B5AC07800AD1297 /* Citation cards.entitlements */,
 				3E15C0EA2AFA3079008499E3 /* Helpers */,
 				3ECBCE572AF2A7B000D509DB /* Views */,
 				3ECBCE4E2AF2A6D500D509DB /* Model */,
@@ -250,6 +264,7 @@
 				3ECBCE502AF2A70400D509DB /* Tag+CoreDataProperties.swift */,
 				3ECBCE512AF2A70400D509DB /* Citation+CoreDataClass.swift */,
 				3ECBCE522AF2A70400D509DB /* Citation+CoreDataProperties.swift */,
+				3E29ACE12B5AD65F00AD1297 /* Persistent.swift */,
 				3ECBCE602AF2B66C00D509DB /* Storage.swift */,
 				3E94B67A2AF95C3E00261BD7 /* Settings.swift */,
 			);
@@ -446,8 +461,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E29ACD42B5ACA1C00AD1297 /* Citation_cards.xcdatamodeld in Sources */,
+				3E29ACDC2B5AD04F00AD1297 /* Tag+CoreDataClass.swift in Sources */,
 				3E29ACC72B5A7ED000AD1297 /* Citation_widget.swift in Sources */,
+				3E29ACDE2B5AD07000AD1297 /* Settings.swift in Sources */,
 				3E29ACC52B5A7ED000AD1297 /* Citation_widgetBundle.swift in Sources */,
+				3E29ACE02B5AD61700AD1297 /* Storage.swift in Sources */,
+				3E29ACE32B5AD65F00AD1297 /* Persistent.swift in Sources */,
+				3E29ACDB2B5AD04700AD1297 /* Citation+CoreDataProperties.swift in Sources */,
+				3E29ACDA2B5AD04400AD1297 /* Citation+CoreDataClass.swift in Sources */,
+				3E29ACDD2B5AD05200AD1297 /* Tag+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +497,7 @@
 				3ECBCE342AF13CE000D509DB /* SceneDelegate.swift in Sources */,
 				3ECBCE5D2AF2AA6D00D509DB /* CitationCell.swift in Sources */,
 				3E29ACB82B5569B500AD1297 /* TaggedCitationsController.swift in Sources */,
+				3E29ACE22B5AD65F00AD1297 /* Persistent.swift in Sources */,
 				3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */,
 				3ECBCE542AF2A70400D509DB /* Tag+CoreDataProperties.swift in Sources */,
 				3ECBCE532AF2A70400D509DB /* Tag+CoreDataClass.swift in Sources */,
@@ -542,6 +566,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Citation widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9YBDW6K85R;
@@ -570,6 +595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Citation widgetExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9YBDW6K85R;
@@ -718,6 +744,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Citation cards/Citation cards.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9YBDW6K85R;
@@ -747,6 +774,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Citation cards/Citation cards.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9YBDW6K85R;

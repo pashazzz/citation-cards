@@ -20,6 +20,7 @@ protocol StorageProtocol {
     func getAllCitations(inOrder: SortOrder) -> [Citation]
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
     func getArchivedCitations() -> [Citation]
+    func getRandomCitation() -> Citation?
     func prepareCitation() -> Citation
     func saveCitation(_ item: Citation) -> Void
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
@@ -35,9 +36,15 @@ protocol StorageProtocol {
 }
 
 class Storage: StorageProtocol {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var persistent: Persistent
+    let context: NSManagedObjectContext
+
+    init() {
+        persistent = Persistent()
+        context = persistent.container.viewContext
+    }
     let notArchivedPredicate = NSPredicate(format: "archivedAt == NULL")
-    
+
     // MARK: Citations
     func getAllCitations(inOrder: SortOrder) -> [Citation] {
         var items: [Citation] = []
@@ -92,8 +99,25 @@ class Storage: StorageProtocol {
         return items
     }
     
+    func getRandomCitation() -> Citation? {
+        let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
+        fetchRequest.predicate = notArchivedPredicate
+        // find out how many items are there
+        let totalresults = try! context.count(for: fetchRequest)
+        if totalresults > 0 {
+            // randomlize offset
+            fetchRequest.fetchOffset = Int.random(in: 0..<totalresults)
+            fetchRequest.fetchLimit = 1
+
+            let res = try! context.fetch(fetchRequest)
+            return res.first ?? nil
+        }
+        
+        return nil
+    }
+    
     func prepareCitation() -> Citation {
-        let preparedCitation = NSEntityDescription.insertNewObject(forEntityName: "Citation", into: self.context) as! Citation
+        let preparedCitation = NSEntityDescription.insertNewObject(forEntityName: "Citation", into: context) as! Citation
         
         return preparedCitation
     }
