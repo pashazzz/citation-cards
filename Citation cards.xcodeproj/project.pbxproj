@@ -13,6 +13,12 @@
 		3E29ACB22B4EF31300AD1297 /* EditTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB12B4EF31300AD1297 /* EditTagCell.swift */; };
 		3E29ACB62B51348600AD1297 /* TagsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB52B51348600AD1297 /* TagsHelper.swift */; };
 		3E29ACB82B5569B500AD1297 /* TaggedCitationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACB72B5569B500AD1297 /* TaggedCitationsController.swift */; };
+		3E29ACC02B5A7ED000AD1297 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E29ACBF2B5A7ED000AD1297 /* WidgetKit.framework */; };
+		3E29ACC22B5A7ED000AD1297 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E29ACC12B5A7ED000AD1297 /* SwiftUI.framework */; };
+		3E29ACC52B5A7ED000AD1297 /* Citation_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACC42B5A7ED000AD1297 /* Citation_widgetBundle.swift */; };
+		3E29ACC72B5A7ED000AD1297 /* Citation_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACC62B5A7ED000AD1297 /* Citation_widget.swift */; };
+		3E29ACC92B5A7ED200AD1297 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E29ACC82B5A7ED200AD1297 /* Assets.xcassets */; };
+		3E29ACCD2B5A7ED200AD1297 /* Citation widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3E29ACBD2B5A7ED000AD1297 /* Citation widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */; };
 		3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DBC42AF54B5400312081 /* HomeController.swift */; };
 		3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E94B67A2AF95C3E00261BD7 /* Settings.swift */; };
@@ -38,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3E29ACCB2B5A7ED200AD1297 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3ECBCE262AF13CE000D509DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E29ACBC2B5A7ED000AD1297;
+			remoteInfo = "Citation widgetExtension";
+		};
 		3ECBCED42AF3B43700D509DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3ECBCE262AF13CE000D509DB /* Project object */;
@@ -54,6 +67,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3E29ACCE2B5A7ED300AD1297 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3E29ACCD2B5A7ED200AD1297 /* Citation widgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3E15C0EB2AFA30A5008499E3 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
 		3E15C0ED2AFBA81D008499E3 /* MoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
@@ -61,6 +88,13 @@
 		3E29ACB12B4EF31300AD1297 /* EditTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTagCell.swift; sourceTree = "<group>"; };
 		3E29ACB52B51348600AD1297 /* TagsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHelper.swift; sourceTree = "<group>"; };
 		3E29ACB72B5569B500AD1297 /* TaggedCitationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaggedCitationsController.swift; sourceTree = "<group>"; };
+		3E29ACBD2B5A7ED000AD1297 /* Citation widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Citation widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E29ACBF2B5A7ED000AD1297 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3E29ACC12B5A7ED000AD1297 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		3E29ACC42B5A7ED000AD1297 /* Citation_widgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_widgetBundle.swift; sourceTree = "<group>"; };
+		3E29ACC62B5A7ED000AD1297 /* Citation_widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Citation_widget.swift; sourceTree = "<group>"; };
+		3E29ACC82B5A7ED200AD1297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3E29ACCA2B5A7ED200AD1297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		3E35DBC42AF54B5400312081 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3E94B67A2AF95C3E00261BD7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -91,6 +125,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3E29ACBA2B5A7ED000AD1297 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E29ACC22B5A7ED000AD1297 /* SwiftUI.framework in Frameworks */,
+				3E29ACC02B5A7ED000AD1297 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ECBCE2B2AF13CE000D509DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +167,26 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		3E29ACBE2B5A7ED000AD1297 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E29ACBF2B5A7ED000AD1297 /* WidgetKit.framework */,
+				3E29ACC12B5A7ED000AD1297 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E29ACC32B5A7ED000AD1297 /* Citation widget */ = {
+			isa = PBXGroup;
+			children = (
+				3E29ACC42B5A7ED000AD1297 /* Citation_widgetBundle.swift */,
+				3E29ACC62B5A7ED000AD1297 /* Citation_widget.swift */,
+				3E29ACC82B5A7ED200AD1297 /* Assets.xcassets */,
+				3E29ACCA2B5A7ED200AD1297 /* Info.plist */,
+			);
+			path = "Citation widget";
+			sourceTree = "<group>";
+		};
 		3ECBCE252AF13CE000D509DB = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +194,8 @@
 				3ECBCE302AF13CE000D509DB /* Citation cards */,
 				3ECBCED12AF3B43700D509DB /* Citation cardsTests */,
 				3ECBCEDE2AF3B4AE00D509DB /* Citation cardsUITests */,
+				3E29ACC32B5A7ED000AD1297 /* Citation widget */,
+				3E29ACBE2B5A7ED000AD1297 /* Frameworks */,
 				3ECBCE2F2AF13CE000D509DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,6 +206,7 @@
 				3ECBCE2E2AF13CE000D509DB /* Citation cards.app */,
 				3ECBCED02AF3B43600D509DB /* Citation cardsTests.xctest */,
 				3ECBCEDD2AF3B4AD00D509DB /* Citation cardsUITests.xctest */,
+				3E29ACBD2B5A7ED000AD1297 /* Citation widgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,6 +287,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3E29ACBC2B5A7ED000AD1297 /* Citation widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E29ACD12B5A7ED300AD1297 /* Build configuration list for PBXNativeTarget "Citation widgetExtension" */;
+			buildPhases = (
+				3E29ACB92B5A7ED000AD1297 /* Sources */,
+				3E29ACBA2B5A7ED000AD1297 /* Frameworks */,
+				3E29ACBB2B5A7ED000AD1297 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Citation widgetExtension";
+			productName = "Citation widgetExtension";
+			productReference = 3E29ACBD2B5A7ED000AD1297 /* Citation widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		3ECBCE2D2AF13CE000D509DB /* Citation cards */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ECBCE452AF13CE100D509DB /* Build configuration list for PBXNativeTarget "Citation cards" */;
@@ -228,10 +311,12 @@
 				3ECBCE2A2AF13CE000D509DB /* Sources */,
 				3ECBCE2B2AF13CE000D509DB /* Frameworks */,
 				3ECBCE2C2AF13CE000D509DB /* Resources */,
+				3E29ACCE2B5A7ED300AD1297 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3E29ACCC2B5A7ED200AD1297 /* PBXTargetDependency */,
 			);
 			name = "Citation cards";
 			productName = "Citation cards";
@@ -281,9 +366,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					3E29ACBC2B5A7ED000AD1297 = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					3ECBCE2D2AF13CE000D509DB = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -313,11 +401,20 @@
 				3ECBCE2D2AF13CE000D509DB /* Citation cards */,
 				3ECBCECF2AF3B43600D509DB /* Citation cardsTests */,
 				3ECBCEDC2AF3B4AD00D509DB /* Citation cardsUITests */,
+				3E29ACBC2B5A7ED000AD1297 /* Citation widgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3E29ACBB2B5A7ED000AD1297 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E29ACC92B5A7ED200AD1297 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ECBCE2C2AF13CE000D509DB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -345,6 +442,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3E29ACB92B5A7ED000AD1297 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E29ACC72B5A7ED000AD1297 /* Citation_widget.swift in Sources */,
+				3E29ACC52B5A7ED000AD1297 /* Citation_widgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ECBCE2A2AF13CE000D509DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,6 +500,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3E29ACCC2B5A7ED200AD1297 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E29ACBC2B5A7ED000AD1297 /* Citation widgetExtension */;
+			targetProxy = 3E29ACCB2B5A7ED200AD1297 /* PBXContainerItemProxy */;
+		};
 		3ECBCED52AF3B43700D509DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3ECBCE2D2AF13CE000D509DB /* Citation cards */;
@@ -426,6 +537,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3E29ACCF2B5A7ED300AD1297 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YBDW6K85R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Citation widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Citation widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky-labs.Citation-cards.Citation-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3E29ACD02B5A7ED300AD1297 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9YBDW6K85R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Citation widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Citation widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sky-labs.Citation-cards.Citation-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3ECBCE432AF13CE100D509DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -548,6 +715,7 @@
 		3ECBCE462AF13CE100D509DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -576,6 +744,7 @@
 		3ECBCE472AF13CE100D509DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -674,6 +843,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3E29ACD12B5A7ED300AD1297 /* Build configuration list for PBXNativeTarget "Citation widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E29ACCF2B5A7ED300AD1297 /* Debug */,
+				3E29ACD02B5A7ED300AD1297 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3ECBCE292AF13CE000D509DB /* Build configuration list for PBXProject "Citation cards" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
