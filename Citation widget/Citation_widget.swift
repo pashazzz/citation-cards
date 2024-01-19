@@ -29,6 +29,9 @@ private func createCitationTemplate() -> CitationEntry {
 }
 
 struct Provider: TimelineProvider {
+    // needed to initialize shared persistent storage
+    let persistent = Persistent()
+    
     func placeholder(in context: Context) -> CitationEntry {
         return createCitationTemplate()
     }
