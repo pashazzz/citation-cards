@@ -70,11 +70,11 @@ struct Citation_widgetEntryView : View {
     var body: some View {
         VStack {
             Text(entry.citation.text)
-                .font(.system(size: 15))
+                .font(.system(size: 12))
             Text(entry.citation.author)
-                .font(.system(size: 14))
+                .font(.system(size: 11))
             Text(entry.citation.source)
-                .font(.system(size: 14))
+                .font(.system(size: 11))
         }
     }
 }
