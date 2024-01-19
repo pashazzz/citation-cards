@@ -10,29 +10,28 @@ import CoreData
 
 struct Persistent {
     // MARK: - Core Data stack
-    let container: NSPersistentContainer
+    static let container: NSPersistentContainer = NSPersistentContainer(name: "Citation_cards")
+    static let context: NSManagedObjectContext = container.viewContext
     
     init() {
-        container = NSPersistentContainer(name: "Citation_cards")
         let url = URL.storeURL(for: "group.com.sky-labs.Citation-cards", databaseName: "Citation_cards")
         let storeDescription = NSPersistentStoreDescription(url: url)
-        container.persistentStoreDescriptions = [storeDescription]
+        Persistent.container.persistentStoreDescriptions = [storeDescription]
         
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        Persistent.container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        container.viewContext.automaticallyMergesChangesFromParent = true
+        Persistent.container.viewContext.automaticallyMergesChangesFromParent = true
     }
 
     // MARK: - Core Data Saving support
 
     mutating func saveContext () {
-        let context = container.viewContext
-        if context.hasChanges {
+        if Persistent.context.hasChanges {
             do {
-                try context.save()
+                try Persistent.context.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

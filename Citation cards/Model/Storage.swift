@@ -36,13 +36,8 @@ protocol StorageProtocol {
 }
 
 class Storage: StorageProtocol {
-    var persistent: Persistent
-    let context: NSManagedObjectContext
+    let context: NSManagedObjectContext = Persistent.context
 
-    init() {
-        persistent = Persistent()
-        context = persistent.container.viewContext
-    }
     let notArchivedPredicate = NSPredicate(format: "archivedAt == NULL")
 
     // MARK: Citations
