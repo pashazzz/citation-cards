@@ -30,6 +30,7 @@
 		3E29ACE32B5AD65F00AD1297 /* Persistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29ACE12B5AD65F00AD1297 /* Persistent.swift */; };
 		3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */; };
 		3E35DBC52AF54B5400312081 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35DBC42AF54B5400312081 /* HomeController.swift */; };
+		3E39327F2B5E904900D8FFAE /* WidgetSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E39327E2B5E904900D8FFAE /* WidgetSettingsController.swift */; };
 		3E94B67B2AF95C3E00261BD7 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E94B67A2AF95C3E00261BD7 /* Settings.swift */; };
 		3ECBCE322AF13CE000D509DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE312AF13CE000D509DB /* AppDelegate.swift */; };
 		3ECBCE342AF13CE000D509DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECBCE332AF13CE000D509DB /* SceneDelegate.swift */; };
@@ -109,6 +110,7 @@
 		3E29ACE12B5AD65F00AD1297 /* Persistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistent.swift; sourceTree = "<group>"; };
 		3E2D55592AFE280E00FCB9DE /* PopupNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupNotification.swift; sourceTree = "<group>"; };
 		3E35DBC42AF54B5400312081 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		3E39327E2B5E904900D8FFAE /* WidgetSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingsController.swift; sourceTree = "<group>"; };
 		3E94B67A2AF95C3E00261BD7 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3ECBCE2E2AF13CE000D509DB /* Citation cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Citation cards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECBCE312AF13CE000D509DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				3E29ACB72B5569B500AD1297 /* TaggedCitationsController.swift */,
 				3E15C0ED2AFBA81D008499E3 /* MoreController.swift */,
 				3ECBCE4A2AF2A10600D509DB /* ArchivedController.swift */,
+				3E39327E2B5E904900D8FFAE /* WidgetSettingsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				3E15C0EC2AFA30A5008499E3 /* DateTimeHelper.swift in Sources */,
 				3ECBCE342AF13CE000D509DB /* SceneDelegate.swift in Sources */,
 				3ECBCE5D2AF2AA6D00D509DB /* CitationCell.swift in Sources */,
+				3E39327F2B5E904900D8FFAE /* WidgetSettingsController.swift in Sources */,
 				3E29ACB82B5569B500AD1297 /* TaggedCitationsController.swift in Sources */,
 				3E29ACE22B5AD65F00AD1297 /* Persistent.swift in Sources */,
 				3E2D555A2AFE280E00FCB9DE /* PopupNotification.swift in Sources */,
