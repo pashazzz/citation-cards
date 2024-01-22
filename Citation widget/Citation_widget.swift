@@ -71,6 +71,7 @@ struct Citation_widgetEntryView : View {
         VStack {
             Text(entry.citation.text)
                 .font(.system(size: 12))
+                .padding([.bottom], 2)
             Text(entry.citation.author)
                 .font(.system(size: 11))
             Text(entry.citation.source)
