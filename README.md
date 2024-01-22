@@ -38,12 +38,16 @@ Use the widgets to always have the one on your phone screen.
         - long tap - edit tag and choose other color
 - More
     - access to archived citations - another screen, with rightward swipe to recover, and leftward - to delete
-    - export citations
-    - choosing the tags from which the citations will display on the widgets, by default - all
+    - export citations: txt, csv
+    - widget settings
     - about info
 
 - Bottom bar with buttons for these screens
 
 Settings stored in UserDefaults.standard.settings
 
-## Widgets
+## Widget
+### Settings
+- time interval for update
+- choosing the tags from which the citations will display on the widgets, by default - all
+- only favourites
