@@ -8,10 +8,48 @@
 import UIKit
 
 class WidgetSettingsController: UITableViewController {
+    @IBOutlet var interval: UILabel!
+    @IBOutlet var tags: UILabel!
+    @IBOutlet var onlyFavourites: UILabel!
 
+    let settings = Settings()
+    
+    let formatter = DateComponentsFormatter()
+
+    @IBAction func selectInterval() {
+        let oldIntervalValue = settings.getWidgetUpdateInterval()
+        let heightForPicker = "\n\n\n\n\n\n\n\n\n"
+        let sheet = UIAlertController(title: "Set interval\(heightForPicker)", message: nil, preferredStyle: .alert)
+        
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .countDownTimer
+        datePicker.frame = CGRectMake(0, 24, 260, 250)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [self] _ in
+            settings.setWidgetUpdateInterval(interval: oldIntervalValue)
+        }
+        let okAction = UIAlertAction(title: "Ok", style: .default) { [self] _ in
+            settings.setWidgetUpdateInterval(interval: datePicker.countDownDuration)
+            interval.text = formatter.string(from: datePicker.countDownDuration)
+        }
+        
+        sheet.addAction(cancelAction)
+        sheet.addAction(okAction)
+        sheet.view.addSubview(datePicker)
+        
+        present(sheet, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.hour, .minute]
+        
         navigationItem.title = "Widget Settings"
+        
+        let intervalVal = settings.getWidgetUpdateInterval()
+        interval.text = formatter.string(from: intervalVal)
     }
 
     // MARK: - Table view data source
@@ -23,16 +61,6 @@ class WidgetSettingsController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // MARK: - Navigation
