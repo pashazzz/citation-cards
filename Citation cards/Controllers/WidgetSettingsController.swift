@@ -23,6 +23,7 @@ class WidgetSettingsController: UITableViewController {
         
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .countDownTimer
+        datePicker.countDownDuration = oldIntervalValue
         datePicker.frame = CGRectMake(0, 24, 260, 250)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [self] _ in

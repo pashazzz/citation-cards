@@ -59,7 +59,6 @@ class Settings: SettingsProtocol {
         return val
     }
     public func setWidgetUpdateInterval(interval: TimeInterval) -> Void {
-        print("setWidgetUpdateInterval: \(interval)")
         storage.setValue(interval, forKey: "widgetUpdateInterval")
     }
 }
