@@ -22,11 +22,12 @@ protocol SettingsProtocol {
 }
 
 class Settings: SettingsProtocol {
-    let storage = UserDefaults.standard
+    let standardStorage = UserDefaults.standard
+    let widgetStorage = UserDefaults(suiteName: "group.com.sky-labs.Citation-cards")
     
     // by default use 'newestFirst'
     public func getSortOrder() -> SortOrder {
-        var order = storage.string(forKey: "order")
+        var order = standardStorage.string(forKey: "order")
         if order == nil {
             order = "newestFirst"
             setSortOrder(order: SortOrder(rawValue: order!)!)
@@ -35,11 +36,11 @@ class Settings: SettingsProtocol {
     }
     
     public func setSortOrder(order: SortOrder) {
-        storage.setValue(order.rawValue, forKey: "order")
+        standardStorage.setValue(order.rawValue, forKey: "order")
     }
     
     public func getOnlyFavourites() -> Bool {
-        var onlyFavourites = storage.value(forKey: "displayOnlyFavourites") as? Bool
+        var onlyFavourites = standardStorage.value(forKey: "displayOnlyFavourites") as? Bool
         if onlyFavourites == nil {
             onlyFavourites = false
             setOnlyFavourites(false)
@@ -47,18 +48,19 @@ class Settings: SettingsProtocol {
         return onlyFavourites!
     }
     public func setOnlyFavourites(_ isTrue: Bool) {
-        storage.setValue(isTrue, forKey: "displayOnlyFavourites")
+        standardStorage.setValue(isTrue, forKey: "displayOnlyFavourites")
     }
     
     public func getWidgetUpdateInterval() -> TimeInterval {
-        let val = storage.double(forKey: "widgetUpdateInterval")
-        if val == 0 {
+        let val = widgetStorage?.double(forKey: "widgetUpdateInterval")
+        if val == nil || val == 0 {
             setWidgetUpdateInterval(interval: 43200.0)
             return TimeInterval(floatLiteral: 43200.0)
         }
-        return val
+        
+        return val!
     }
     public func setWidgetUpdateInterval(interval: TimeInterval) -> Void {
-        storage.setValue(interval, forKey: "widgetUpdateInterval")
+        widgetStorage?.setValue(interval, forKey: "widgetUpdateInterval")
     }
 }

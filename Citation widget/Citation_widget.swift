@@ -43,6 +43,7 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         let storage = Storage()
+        let settings = Settings()
         
         let date = Date()
         var entry: CitationEntry = createCitationTemplate()
@@ -56,7 +57,8 @@ struct Provider: TimelineProvider {
                     source: citation?.source ?? ""))
         }
         
-        let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 12, to: date)!
+        let updateInterval = Int(settings.getWidgetUpdateInterval())
+        let nextUpdateDate = Calendar.current.date(byAdding: .second, value: updateInterval, to: date)!
         
         let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
         
