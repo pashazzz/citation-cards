@@ -18,7 +18,7 @@ class WidgetSettingsController: UITableViewController {
 
     @IBAction func selectInterval() {
         let oldIntervalValue = settings.getWidgetUpdateInterval()
-        let heightForPicker = "\n\n\n\n\n\n\n\n\n"
+        let heightForPicker = "\n\n\n\n\n\n\n\n\n\n"
         let sheet = UIAlertController(title: "Set interval\(heightForPicker)", message: nil, preferredStyle: .alert)
         
         let datePicker = UIDatePicker()
