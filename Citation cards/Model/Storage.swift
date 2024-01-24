@@ -20,7 +20,7 @@ protocol StorageProtocol {
     func getAllCitations(inOrder: SortOrder) -> [Citation]
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
     func getArchivedCitations() -> [Citation]
-    func getRandomCitation() -> Citation?
+    func getRandomCitation(onlyFavourites: Bool) -> Citation?
     func prepareCitation() -> Citation
     func saveCitation(_ item: Citation) -> Void
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
@@ -94,9 +94,16 @@ class Storage: StorageProtocol {
         return items
     }
     
-    func getRandomCitation() -> Citation? {
+    func getRandomCitation(onlyFavourites: Bool) -> Citation? {
         let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
         fetchRequest.predicate = notArchivedPredicate
+        if onlyFavourites {
+            let isFavouritePredicate = NSPredicate(format: "isFavourite == 1")
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+                isFavouritePredicate,
+                notArchivedPredicate
+            ])
+        }
         // find out how many items are there
         let totalresults = try! context.count(for: fetchRequest)
         if totalresults > 0 {

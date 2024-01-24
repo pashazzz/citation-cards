@@ -10,11 +10,15 @@ import UIKit
 class WidgetSettingsController: UITableViewController {
     @IBOutlet var interval: UILabel!
     @IBOutlet var tags: UILabel!
-    @IBOutlet var onlyFavourites: UILabel!
+    @IBOutlet var onlyFavourites: UISwitch!
 
     let settings = Settings()
     
     let formatter = DateComponentsFormatter()
+    
+    @objc private func onOnlyFavouritesChanged(_ onlyFavouritesSwitch: UISwitch) {
+        settings.setWidgetOnlyFavourites(val: onlyFavouritesSwitch.isOn)
+    }
 
     @IBAction func selectInterval() {
         let oldIntervalValue = settings.getWidgetUpdateInterval()
@@ -45,6 +49,8 @@ class WidgetSettingsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        onlyFavourites.addTarget(self, action: #selector(onOnlyFavouritesChanged(_:)), for: .valueChanged)
+        
         formatter.unitsStyle = .abbreviated
         formatter.allowedUnits = [.hour, .minute]
         
@@ -52,6 +58,7 @@ class WidgetSettingsController: UITableViewController {
         
         let intervalVal = settings.getWidgetUpdateInterval()
         interval.text = formatter.string(from: intervalVal)
+        onlyFavourites.isOn = settings.getWidgetOnlyFavourites()
     }
 
     // MARK: - Table view data source

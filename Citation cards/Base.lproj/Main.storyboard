@@ -617,27 +617,24 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ngk-QG-lj4">
-                                        <rect key="frame" x="0.0" y="163.66666793823242" width="393" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="163.66666793823242" width="393" height="53.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ngk-QG-lj4" id="2G1-Od-Kn8">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="53.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1pN-ls-uae">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="353" height="31.333333333333329"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Display only favourites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0P-7F-Tjl">
-                                                            <rect key="frame" x="0.0" y="0.0" width="319" height="20.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="304" height="31.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bool" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWG-db-uoz">
-                                                            <rect key="frame" x="319" y="0.0" width="34" height="20.666666666666668"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNS-1X-8Nq">
+                                                            <rect key="frame" x="304" y="0.0" width="51" height="31.333333333333332"/>
+                                                        </switch>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -660,7 +657,7 @@
                     <navigationItem key="navigationItem" id="9th-S3-nWv"/>
                     <connections>
                         <outlet property="interval" destination="G9h-hB-Lpr" id="1es-fV-ilF"/>
-                        <outlet property="onlyFavourites" destination="CWG-db-uoz" id="Bbs-Sf-icZ"/>
+                        <outlet property="onlyFavourites" destination="yNS-1X-8Nq" id="DjA-ZB-5gE"/>
                         <outlet property="tags" destination="QiR-zz-TeJ" id="zbe-Zc-g5j"/>
                     </connections>
                 </tableViewController>

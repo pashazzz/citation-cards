@@ -19,6 +19,8 @@ protocol SettingsProtocol {
     func setOnlyFavourites(_: Bool) -> Void
     func getWidgetUpdateInterval() -> TimeInterval
     func setWidgetUpdateInterval(interval: TimeInterval) -> Void
+    func getWidgetOnlyFavourites() -> Bool
+    func setWidgetOnlyFavourites(val: Bool)
 }
 
 class Settings: SettingsProtocol {
@@ -63,4 +65,12 @@ class Settings: SettingsProtocol {
     public func setWidgetUpdateInterval(interval: TimeInterval) -> Void {
         widgetStorage?.setValue(interval, forKey: "widgetUpdateInterval")
     }
+    
+    public func getWidgetOnlyFavourites() -> Bool {
+        return widgetStorage?.bool(forKey: "widgetOnlyFavourites") ?? false
+    }
+    public func setWidgetOnlyFavourites(val: Bool) {
+        widgetStorage?.setValue(val, forKey: "widgetOnlyFavourites")
+    }
+    
 }
