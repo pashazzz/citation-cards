@@ -113,7 +113,7 @@ class Storage: StorageProtocol {
         var res = try! context.fetch(fetchRequest)
         if withTags.count > 0 {
             res = onlyWithTags(citations: res, withTags: withTags)
-            guard res.count == 0 else { return nil }
+            guard res.count > 0 else { return nil }
         }
 
         // randomlize offset
