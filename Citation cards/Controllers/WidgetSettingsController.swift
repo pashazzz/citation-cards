@@ -60,6 +60,11 @@ class WidgetSettingsController: UITableViewController {
         interval.text = formatter.string(from: intervalVal)
         onlyFavourites.isOn = settings.getWidgetOnlyFavourites()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let tagsIncluded = settings.getWidgetTags()
+        tags?.text = "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
+    }
 
     // MARK: - Table view data source
 

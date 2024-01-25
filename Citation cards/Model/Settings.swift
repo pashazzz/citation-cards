@@ -19,14 +19,20 @@ protocol SettingsProtocol {
     func setOnlyFavourites(_: Bool) -> Void
     func getWidgetUpdateInterval() -> TimeInterval
     func setWidgetUpdateInterval(interval: TimeInterval) -> Void
+    func getWidgetTags() -> [Tag]
+    func addWidgetTag(_: Tag)
+    func removeWidgetTag(_: Tag)
     func getWidgetOnlyFavourites() -> Bool
     func setWidgetOnlyFavourites(val: Bool)
 }
 
 class Settings: SettingsProtocol {
+    let storage = Storage()
+
     let standardStorage = UserDefaults.standard
     let widgetStorage = UserDefaults(suiteName: "group.com.sky-labs.Citation-cards")
     
+    // MARK: Home page Sort order
     // by default use 'newestFirst'
     public func getSortOrder() -> SortOrder {
         var order = standardStorage.string(forKey: "order")
@@ -41,6 +47,7 @@ class Settings: SettingsProtocol {
         standardStorage.setValue(order.rawValue, forKey: "order")
     }
     
+    // MARK: Home page Only favourites
     public func getOnlyFavourites() -> Bool {
         var onlyFavourites = standardStorage.value(forKey: "displayOnlyFavourites") as? Bool
         if onlyFavourites == nil {
@@ -53,6 +60,7 @@ class Settings: SettingsProtocol {
         standardStorage.setValue(isTrue, forKey: "displayOnlyFavourites")
     }
     
+    // MARK: Widget Update interval
     public func getWidgetUpdateInterval() -> TimeInterval {
         let val = widgetStorage?.double(forKey: "widgetUpdateInterval")
         if val == nil || val == 0 {
@@ -66,6 +74,36 @@ class Settings: SettingsProtocol {
         widgetStorage?.setValue(interval, forKey: "widgetUpdateInterval")
     }
     
+    // MARK: Widget Tags
+    public func getWidgetTags() -> [Tag] {
+        let tagsStringArr = (widgetStorage?.string(forKey: "widgetTags") ?? "")
+            .split(separator: ";")
+            .map(String.init)
+        let allTags = storage.getAllTags()
+        let included: [Tag] = allTags.filter {tag in
+            tagsStringArr.contains(tag.tag!)
+        }
+        
+        return included
+    }
+    public func addWidgetTag(_ tag: Tag) {
+        var tagsStringArr = (widgetStorage?.string(forKey: "widgetTags") ?? "")
+            .split(separator: ";")
+            .map(String.init)
+        tagsStringArr.append(tag.tag!)
+        widgetStorage?.setValue(tagsStringArr.joined(separator: ";"), forKey: "widgetTags")
+    }
+    public func removeWidgetTag(_ tag: Tag) {
+        let tagsStringArr = (widgetStorage?.string(forKey: "widgetTags") ?? "")
+            .split(separator: ";")
+            .map(String.init)
+        let updTagsStringArr = tagsStringArr.filter {t in
+            t != tag.tag
+        }
+        widgetStorage?.setValue(updTagsStringArr.joined(separator: ";"), forKey: "widgetTags")
+    }
+    
+    // MARK: Widget Only favourites
     public func getWidgetOnlyFavourites() -> Bool {
         return widgetStorage?.bool(forKey: "widgetOnlyFavourites") ?? false
     }
