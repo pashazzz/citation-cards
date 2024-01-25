@@ -20,7 +20,7 @@ protocol StorageProtocol {
     func getAllCitations(inOrder: SortOrder) -> [Citation]
     func getFavouriteCitations(inOrder: SortOrder) -> [Citation]
     func getArchivedCitations() -> [Citation]
-    func getRandomCitation(onlyFavourites: Bool) -> Citation?
+    func getRandomCitation(onlyFavourites: Bool, withTags: [Tag]) -> Citation?
     func prepareCitation() -> Citation
     func saveCitation(_ item: Citation) -> Void
     func editCitation(_ item: Citation, needToModifyDate: Bool) -> Void
@@ -94,28 +94,46 @@ class Storage: StorageProtocol {
         return items
     }
     
-    func getRandomCitation(onlyFavourites: Bool) -> Citation? {
+    func getRandomCitation(
+        onlyFavourites: Bool,
+        withTags: [Tag]
+    ) -> Citation? {
         let fetchRequest: NSFetchRequest<Citation> = Citation.fetchRequest()
-        fetchRequest.predicate = notArchivedPredicate
+        var predicates: [NSPredicate] = [notArchivedPredicate]
         if onlyFavourites {
             let isFavouritePredicate = NSPredicate(format: "isFavourite == 1")
-            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-                isFavouritePredicate,
-                notArchivedPredicate
-            ])
+            predicates.append(isFavouritePredicate)
         }
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        
         // find out how many items are there
-        let totalresults = try! context.count(for: fetchRequest)
-        if totalresults > 0 {
-            // randomlize offset
-            fetchRequest.fetchOffset = Int.random(in: 0..<totalresults)
-            fetchRequest.fetchLimit = 1
+        let totalResults = try! context.count(for: fetchRequest)
+        guard totalResults > 0 else { return nil }
 
-            let res = try! context.fetch(fetchRequest)
-            return res.first ?? nil
+        var res = try! context.fetch(fetchRequest)
+        if withTags.count > 0 {
+            res = onlyWithTags(citations: res, withTags: withTags)
+            guard res.count == 0 else { return nil }
+        }
+
+        // randomlize offset
+        let randomIndex = Int.random(in: 0 ..< res.count)
+        
+        return res[randomIndex]
+    }
+    
+    private func onlyWithTags(citations: [Citation], withTags: [Tag]) -> [Citation] {
+        let result: [Citation] = citations.filter { citation in
+            for tag in withTags {
+                let isContains = citation.citationToTag?.contains(tag)
+                if isContains != nil && isContains != false {
+                    return true
+                }
+            }
+            return false
         }
         
-        return nil
+        return result
     }
     
     func prepareCitation() -> Citation {

@@ -46,9 +46,14 @@ struct Provider: TimelineProvider {
         let settings = Settings()
         
         let onlyFavourites = settings.getWidgetOnlyFavourites()
+        let includedTags = settings.getWidgetTags()
+
         let date = Date()
         var entry: CitationEntry = createCitationTemplate()
-        let citation = storage.getRandomCitation(onlyFavourites: onlyFavourites)
+        let citation = storage.getRandomCitation(
+            onlyFavourites: onlyFavourites,
+            withTags: includedTags)
+
         if citation != nil {
             entry = CitationEntry(
                 date: date,
