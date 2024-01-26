@@ -112,7 +112,8 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         cell.source?.text = citation.source
         
         let tagsIncluded = citation.citationToTag?.allObjects as! [Tag]
-        cell.tags?.text = "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
+        let tagsText = tagsIncluded.count == 0 ? "" : "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
+        cell.tags?.text = tagsText
         
         // is favourite
         cell.isFavourite.setTitle("", for: .normal)

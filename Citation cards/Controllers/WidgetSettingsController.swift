@@ -63,7 +63,10 @@ class WidgetSettingsController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let tagsIncluded = settings.getWidgetTags()
-        tags?.text = "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
+        let tagsText = tagsIncluded.count == 0
+            ? "All tags included"
+            : "Tags: " + (tagsIncluded.map({$0.tag!})).joined(separator: ", ")
+        tags?.text = tagsText
     }
 
     // MARK: - Table view data source
