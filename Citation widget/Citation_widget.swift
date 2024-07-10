@@ -80,10 +80,14 @@ struct Citation_widgetEntryView : View {
             Text(entry.citation.text)
                 .font(.system(size: 12))
                 .padding([.bottom], 2)
-            Text(entry.citation.author)
-                .font(.system(size: 11))
-            Text(entry.citation.source)
-                .font(.system(size: 11))
+            if entry.citation.author != "" {
+                Text(entry.citation.author)
+                    .font(.system(size: 11))
+            }
+            if entry.citation.source != "" {
+                Text(entry.citation.source)
+                    .font(.system(size: 11))
+            }
         }
     }
 }
