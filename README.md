@@ -2,6 +2,8 @@
 ## Overview
 iOS application for store a great, smart, motivatation citations and coping cards.
 Use the widgets to always have the one on your phone screen.
+![Home screen](https://pm-lab.s3.eu-central-1.amazonaws.com/CitationCards/HomeScreen.png "Home screen")
+![Widget](https://pm-lab.s3.eu-central-1.amazonaws.com/CitationCards/Widget.png "Widget")
 
 ## Description
 ### Models
